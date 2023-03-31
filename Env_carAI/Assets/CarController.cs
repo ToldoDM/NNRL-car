@@ -22,6 +22,7 @@ public class CarController : MonoBehaviour
     public float sensorMultiplier = 0.1f;
 
     private Vector3 lastPosition;
+    private float lastSpeed = 0f;
     private float totalDistanceTravelled;
     private float avgSpeed;
 
@@ -41,6 +42,7 @@ public class CarController : MonoBehaviour
         totalDistanceTravelled = 0f;
         avgSpeed = 0f;
         lastPosition = startPosition;
+        lastSpeed = 0f;
         overallFitness = 0f;
         transform.position = startPosition;
         transform.eulerAngles = startRotation;
@@ -48,7 +50,6 @@ public class CarController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Reset();
         if (!collision.gameObject.name.Equals("Ground"))
         {
             Reset();
@@ -63,13 +64,11 @@ public class CarController : MonoBehaviour
         //Neural network code here
 
         MoveCar();
-
+        lastSpeed = currentSpeed;
+        
         timeSinceStart += Time.deltaTime;
 
         CalculateFitness();
-
-        //a = 0;
-        //t = 0;
     }
 
 
@@ -136,18 +135,21 @@ public class CarController : MonoBehaviour
         float inputVertical = Input.GetAxis("Vertical");
         float inputHorizontal = Input.GetAxis("Horizontal");
 
+        currentAcceleration = (currentSpeed - lastSpeed) / Time.deltaTime;
+        // print(currentAcceleration);
         if (inputVertical > 0)
         {
             currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, acceleration * Time.deltaTime);
         }
         else if (inputVertical < 0)
         {
-            currentSpeed = Mathf.MoveTowards(currentSpeed, -maxSpeed/2, acceleration * Time.deltaTime);
+            currentSpeed = Mathf.MoveTowards(currentSpeed, -maxSpeed / 2, acceleration * Time.deltaTime);
         }
         else
         {
             currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.deltaTime);
         }
+        currentAcceleration = (currentSpeed - lastSpeed) / Time.deltaTime;
 
         transform.Translate(Vector3.forward * (currentSpeed * Time.deltaTime));
 
