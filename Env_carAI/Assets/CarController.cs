@@ -7,12 +7,17 @@ public class CarController : MonoBehaviour
     private Vector3 startPosition, startRotation;
     private readonly int _distanceDivision = 30;
 
-    [Range(-1f, 1f)] public float a, t;
-
+    [Header("CurrentStats")] public float currentSpeed;
+    public float currentAcceleration;
     public float timeSinceStart = 0f;
+    public float overallFitness;
 
-    [Header("Fitness")] public float overallFitness;
-    public float distanceMultipler = 1.4f;
+    [Header("CarStats")] public float maxSpeed = 11.4f;
+    public float acceleration = 5f;
+    public float deceleration = 2f;
+    public float turnSpeed = 0.02f;
+
+    [Header("Fitness")] public float distanceMultipler = 1.4f;
     public float avgSpeedMultiplier = 0.2f;
     public float sensorMultiplier = 0.1f;
 
@@ -30,6 +35,8 @@ public class CarController : MonoBehaviour
 
     public void Reset()
     {
+        currentSpeed = 0f;
+        currentAcceleration = 0f;
         timeSinceStart = 0f;
         totalDistanceTravelled = 0f;
         avgSpeed = 0f;
@@ -55,7 +62,7 @@ public class CarController : MonoBehaviour
 
         //Neural network code here
 
-        MoveCar(a, t);
+        MoveCar();
 
         timeSinceStart += Time.deltaTime;
 
@@ -102,7 +109,7 @@ public class CarController : MonoBehaviour
         {
             aSensor = hit.distance / _distanceDivision;
             Debug.DrawLine(r.origin, hit.point, Color.red);
-            print("rayRight: " + aSensor);
+            // print("rayRight: " + aSensor);
         }
 
         r.direction = rayTop;
@@ -111,7 +118,7 @@ public class CarController : MonoBehaviour
         {
             bSensor = hit.distance / _distanceDivision;
             Debug.DrawLine(r.origin, hit.point, Color.red);
-            print("rayTop: " + bSensor);
+            // print("rayTop: " + bSensor);
         }
 
         r.direction = rayLeft;
@@ -120,18 +127,33 @@ public class CarController : MonoBehaviour
         {
             cSensor = hit.distance / _distanceDivision;
             Debug.DrawLine(r.origin, hit.point, Color.red);
-            print("rayLeft: " + cSensor);
+            // print("rayLeft: " + cSensor);
         }
     }
 
-    private Vector3 inp;
-
-    public void MoveCar(float v, float h)
+    private void MoveCar()
     {
-        inp = Vector3.Lerp(Vector3.zero, new Vector3(0, 0, v * 11.4f), 0.02f);
-        inp = transform.TransformDirection(inp);
-        transform.position += inp;
+        float inputVertical = Input.GetAxis("Vertical");
+        float inputHorizontal = Input.GetAxis("Horizontal");
 
-        transform.eulerAngles += new Vector3(0, (h * 90) * 0.02f, 0);
+        if (inputVertical > 0)
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, acceleration * Time.deltaTime);
+        }
+        else if (inputVertical < 0)
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, -maxSpeed/2, acceleration * Time.deltaTime);
+        }
+        else
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.deltaTime);
+        }
+
+        transform.Translate(Vector3.forward * (currentSpeed * Time.deltaTime));
+
+        if (currentSpeed != 0)
+        {
+            transform.eulerAngles += new Vector3(0, (inputHorizontal * 90) * turnSpeed, 0);
+        }
     }
 }

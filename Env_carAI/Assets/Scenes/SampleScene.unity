@@ -488,10 +488,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ab39b299e0b5a418715a4fae2c58d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: 0
-  t: 0
+  currentSpeed: 0
+  currentAcceleration: 0
   timeSinceStart: 0
   overallFitness: 0
+  maxSpeed: 11.4
+  acceleration: 5
+  deceleration: 2
+  turnSpeed: 0.02
   distanceMultipler: 1.4
   avgSpeedMultiplier: 0.2
   sensorMultiplier: 0.1
@@ -745,7 +749,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422083987}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &422083990
 Camera:
   m_ObjectHideFlags: 0
