@@ -17,6 +17,7 @@ public class CarController : MonoBehaviour
     public float currentAcceleration;
     public float timeSinceStart = 0f;
     public float overallFitness;
+    public int currentRun = 1;
 
     [Header("Network Options")] public int layers = 1;
     public int neurons = 10;
@@ -50,6 +51,7 @@ public class CarController : MonoBehaviour
 
     public void Reset()
     {
+        currentRun++;
         var transform1 = transform;
         currentSpeed = 0f;
         currentAcceleration = 0f;
@@ -78,14 +80,15 @@ public class CarController : MonoBehaviour
         InputSensors();
         _lastPosition = transform.position;
 
-        var a = Input.GetAxis("Vertical");
-        var s = Input.GetAxis("Horizontal");
-        MoveCar(a, s);
+        //Human controlled
+        // var a = Input.GetAxis("Vertical");
+        // var s = Input.GetAxis("Horizontal");
+        // MoveCar(a, s);
 
-        //Neural network code here
-        // ClearAndAddInputs();
-        // var nnOut = _network.RunNetwork(_nnInputs);
-        // MoveCar(nnOut[0], nnOut[1]);
+        //Neural network
+        ClearAndAddInputs();
+        var nnOut = _network.RunNetwork(_nnInputs);
+        MoveCar(nnOut[0], nnOut[1]);
 
         _lastSpeed = currentSpeed;
         timeSinceStart += Time.deltaTime;
