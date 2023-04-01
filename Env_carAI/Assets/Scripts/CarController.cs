@@ -10,8 +10,8 @@ public class CarController : MonoBehaviour
     private NNet _network;
     private const int DistanceDivision = 10;
     private const float MaxRayDistance = 10f;
-    private float _nnAcceleration;
-    private float _nnSpeed;
+    public float nnAcceleration;
+    public float nnSpeed;
 
     [Header("CurrentStats")] public float currentSpeed;
     public float currentAcceleration;
@@ -36,7 +36,11 @@ public class CarController : MonoBehaviour
     private float _totalDistanceTravelled;
     private float _totalDistanceForward;
     private float _avgSpeed;
-    private float _aSensor, _bSensor, _cSensor, _dSensor, _eSensor;
+    public float aSensor;
+    public float bSensor;
+    public float cSensor;
+    public float dSensor;
+    public float eSensor;
     private List<float> _nnInputs;
 
     private void Awake()
@@ -99,13 +103,13 @@ public class CarController : MonoBehaviour
     private void ClearAndAddInputs()
     {
         _nnInputs.Clear();
-        _nnInputs.Add(_aSensor);
-        _nnInputs.Add(_bSensor);
-        _nnInputs.Add(_cSensor);
-        _nnInputs.Add(_dSensor);
-        _nnInputs.Add(_eSensor);
-        _nnInputs.Add(_nnAcceleration);
-        _nnInputs.Add(_nnSpeed);
+        _nnInputs.Add(aSensor);
+        _nnInputs.Add(bSensor);
+        _nnInputs.Add(cSensor);
+        _nnInputs.Add(dSensor);
+        _nnInputs.Add(eSensor);
+        _nnInputs.Add(nnAcceleration);
+        _nnInputs.Add(nnSpeed);
     }
 
 
@@ -119,7 +123,7 @@ public class CarController : MonoBehaviour
         _avgSpeed = _totalDistanceTravelled / timeSinceStart;
 
         overallFitness = (_totalDistanceForward * distanceMultiplier) + (_avgSpeed * avgSpeedMultiplier) +
-                         (((_aSensor + _bSensor + _cSensor + _dSensor + _eSensor) / 5) * sensorMultiplier);
+                         (((aSensor + bSensor + cSensor + dSensor + eSensor) / 5) * sensorMultiplier);
 
         if (timeSinceStart > 20 && overallFitness < 40)
         {
@@ -145,15 +149,15 @@ public class CarController : MonoBehaviour
         Vector3 rayLeft = Quaternion.Euler(0, -90, 0) * forward;
 
         var r = new Ray(transform1.position, rayTop);
-        _aSensor = RayCastRays(r);
+        aSensor = RayCastRays(r);
         r.direction = rayTopRight;
-        _bSensor = RayCastRays(r);
+        bSensor = RayCastRays(r);
         r.direction = rayTopLeft;
-        _cSensor = RayCastRays(r);
+        cSensor = RayCastRays(r);
         r.direction = rayRight;
-        _dSensor = RayCastRays(r);
+        dSensor = RayCastRays(r);
         r.direction = rayLeft;
-        _eSensor = RayCastRays(r);
+        eSensor = RayCastRays(r);
 
         // print("rayRight: " + aSensor);
         // print("rayTop: " + bSensor);
@@ -172,7 +176,7 @@ public class CarController : MonoBehaviour
         return hit.distance / DistanceDivision;
     }
 
-    private void MoveCar(float inputVertical, float inputHorizontal)
+    public void MoveCar(float inputVertical, float inputHorizontal)
     {
         currentSpeed = inputVertical switch
         {
@@ -180,10 +184,10 @@ public class CarController : MonoBehaviour
             < 0 => Mathf.MoveTowards(currentSpeed, -maxSpeed / 2, acceleration * Time.deltaTime),
             _ => Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.deltaTime)
         };
-        _nnSpeed = currentSpeed / maxSpeed;
+        nnSpeed = currentSpeed / maxSpeed;
 
         currentAcceleration = (currentSpeed - _lastSpeed) / Time.deltaTime;
-        _nnAcceleration = currentAcceleration / acceleration;
+        nnAcceleration = currentAcceleration / acceleration;
 
         transform.Translate(Vector3.forward * (currentSpeed * Time.deltaTime));
         if (currentSpeed != 0)

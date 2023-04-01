@@ -476,32 +476,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400008, guid: 10d5972a5440d489f8a54e2d7498188b, type: 3}
   m_PrefabInstance: {fileID: 1944913866}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &238201687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238201684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06ab39b299e0b5a418715a4fae2c58d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentSpeed: 0
-  currentAcceleration: 0
-  timeSinceStart: 0
-  overallFitness: 0
-  currentRun: 1
-  layers: 5
-  neurons: 10
-  maxSpeed: 11.4
-  acceleration: 5
-  deceleration: 2
-  turnSpeed: 0.02
-  distanceMultiplier: 1.4
-  avgSpeedMultiplier: 0.2
-  sensorMultiplier: 0.1
 --- !u!65 &238201688
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -532,6 +506,39 @@ Rigidbody:
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &238201691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238201684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ab39b299e0b5a418715a4fae2c58d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nnAcceleration: 0
+  nnSpeed: 0
+  currentSpeed: 0
+  currentAcceleration: 0
+  timeSinceStart: 0
+  overallFitness: 0
+  currentRun: 2
+  layers: 1
+  neurons: 10
+  maxSpeed: 11.4
+  acceleration: 5
+  deceleration: 2
+  turnSpeed: 0.02
+  distanceMultiplier: 1.4
+  avgSpeedMultiplier: 0.2
+  sensorMultiplier: 0.1
+  aSensor: 0
+  bSensor: 0
+  cSensor: 0
+  dSensor: 0
+  eSensor: 0
+--- !u!114 &238201692
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2623,7 +2630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 10d5972a5440d489f8a54e2d7498188b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 10d5972a5440d489f8a54e2d7498188b, type: 3}
       propertyPath: m_LocalRotation.w
