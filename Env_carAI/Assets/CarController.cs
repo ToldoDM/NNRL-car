@@ -46,13 +46,14 @@ public class CarController : MonoBehaviour
         currentSpeed = 0f;
         currentAcceleration = 0f;
         timeSinceStart = 0f;
-        _totalDistanceTravelled = 0f;
-        _avgSpeed = 0f;
         _lastPosition = _startPosition;
         _lastSpeed = 0f;
-        overallFitness = 0f;
         transform1.position = _startPosition;
         transform1.eulerAngles = _startRotation;
+        _totalDistanceTravelled = 0f;
+        _totalDistanceForward = 0f;
+        _avgSpeed = 0f;
+        overallFitness = 0f;
     }
 
     private void OnCollisionEnter(Collision collision)
