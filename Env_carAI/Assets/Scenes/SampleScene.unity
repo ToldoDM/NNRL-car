@@ -517,8 +517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ab39b299e0b5a418715a4fae2c58d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nnAcceleration: 0
-  nnSpeed: 0
   currentSpeed: 0
   currentAcceleration: 0
   timeSinceStart: 0
@@ -533,11 +531,6 @@ MonoBehaviour:
   distanceMultiplier: 1.4
   avgSpeedMultiplier: 0.2
   sensorMultiplier: 0.1
-  aSensor: 0
-  bSensor: 0
-  cSensor: 0
-  dSensor: 0
-  eSensor: 0
 --- !u!114 &238201692
 MonoBehaviour:
   m_ObjectHideFlags: 0

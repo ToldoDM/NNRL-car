@@ -1,17 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[RequireComponent(typeof(NNet))]
 public class CarController : MonoBehaviour
 {
     private Vector3 _startPosition, _startRotation;
     private NNet _network;
     private const int DistanceDivision = 10;
     private const float MaxRayDistance = 10f;
-    public float nnAcceleration;
-    public float nnSpeed;
+    private float _nnAcceleration;
+    private float _nnSpeed;
 
     [Header("CurrentStats")] public float currentSpeed;
     public float currentAcceleration;
@@ -36,21 +36,22 @@ public class CarController : MonoBehaviour
     private float _totalDistanceTravelled;
     private float _totalDistanceForward;
     private float _avgSpeed;
-    public float aSensor;
-    public float bSensor;
-    public float cSensor;
-    public float dSensor;
-    public float eSensor;
-    private List<float> _nnInputs;
+    private float _aSensor;
+    private float _bSensor;
+    private float _cSensor;
+    private float _dSensor;
+
+    private float _eSensor;
+    // private List<float> _nnInputs;
 
     private void Awake()
     {
         var transform1 = transform;
         _startPosition = transform1.position;
         _startRotation = transform1.eulerAngles;
-        _nnInputs = new List<float>();
-        _network = GetComponent<NNet>();
-        _network.Initialise(layers, neurons, 7, 2);
+        // _nnInputs = new List<float>();
+        // _network = GetComponent<NNet>();
+        // _network.Initialise(layers, neurons, 7, 2);
     }
 
     public void Reset()
@@ -68,7 +69,7 @@ public class CarController : MonoBehaviour
         _totalDistanceForward = 0f;
         _avgSpeed = 0f;
         overallFitness = 0f;
-        _network.Initialise(layers, neurons, 7, 2);
+        // _network.Initialise(layers, neurons, 7, 2);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -85,14 +86,14 @@ public class CarController : MonoBehaviour
         _lastPosition = transform.position;
 
         //Human controlled
-        // var a = Input.GetAxis("Vertical");
-        // var s = Input.GetAxis("Horizontal");
-        // MoveCar(a, s);
+        var a = Input.GetAxis("Vertical");
+        var s = Input.GetAxis("Horizontal");
+        MoveCar(a, s);
 
         //Neural network
-        ClearAndAddInputs();
-        var nnOut = _network.RunNetwork(_nnInputs);
-        MoveCar(nnOut[0], nnOut[1]);
+        // ClearAndAddInputs();
+        // var nnOut = _network.RunNetwork(_nnInputs);
+        // MoveCar(nnOut[0], nnOut[1]);
 
         _lastSpeed = currentSpeed;
         timeSinceStart += Time.deltaTime;
@@ -100,17 +101,17 @@ public class CarController : MonoBehaviour
         CalculateFitness();
     }
 
-    private void ClearAndAddInputs()
-    {
-        _nnInputs.Clear();
-        _nnInputs.Add(aSensor);
-        _nnInputs.Add(bSensor);
-        _nnInputs.Add(cSensor);
-        _nnInputs.Add(dSensor);
-        _nnInputs.Add(eSensor);
-        _nnInputs.Add(nnAcceleration);
-        _nnInputs.Add(nnSpeed);
-    }
+    // private void ClearAndAddInputs()
+    // {
+    //     _nnInputs.Clear();
+    //     _nnInputs.Add(_aSensor);
+    //     _nnInputs.Add(_bSensor);
+    //     _nnInputs.Add(_cSensor);
+    //     _nnInputs.Add(_dSensor);
+    //     _nnInputs.Add(_eSensor);
+    //     _nnInputs.Add(_nnAcceleration);
+    //     _nnInputs.Add(_nnSpeed);
+    // }
 
 
     private void CalculateFitness()
@@ -123,7 +124,7 @@ public class CarController : MonoBehaviour
         _avgSpeed = _totalDistanceTravelled / timeSinceStart;
 
         overallFitness = (_totalDistanceForward * distanceMultiplier) + (_avgSpeed * avgSpeedMultiplier) +
-                         (((aSensor + bSensor + cSensor + dSensor + eSensor) / 5) * sensorMultiplier);
+                         (((_aSensor + _bSensor + _cSensor + _dSensor + _eSensor) / 5) * sensorMultiplier);
 
         if (timeSinceStart > 20 && overallFitness < 40)
         {
@@ -132,7 +133,6 @@ public class CarController : MonoBehaviour
 
         if (overallFitness >= 1000)
         {
-            //Saves network to a JSON
             Reset();
         }
     }
@@ -149,19 +149,15 @@ public class CarController : MonoBehaviour
         Vector3 rayLeft = Quaternion.Euler(0, -90, 0) * forward;
 
         var r = new Ray(transform1.position, rayTop);
-        aSensor = RayCastRays(r);
+        _aSensor = RayCastRays(r);
         r.direction = rayTopRight;
-        bSensor = RayCastRays(r);
+        _bSensor = RayCastRays(r);
         r.direction = rayTopLeft;
-        cSensor = RayCastRays(r);
+        _cSensor = RayCastRays(r);
         r.direction = rayRight;
-        dSensor = RayCastRays(r);
+        _dSensor = RayCastRays(r);
         r.direction = rayLeft;
-        eSensor = RayCastRays(r);
-
-        // print("rayRight: " + aSensor);
-        // print("rayTop: " + bSensor);
-        // print("rayLeft: " + cSensor);
+        _eSensor = RayCastRays(r);
     }
 
     private float RayCastRays(Ray r)
@@ -176,18 +172,21 @@ public class CarController : MonoBehaviour
         return hit.distance / DistanceDivision;
     }
 
-    public void MoveCar(float inputVertical, float inputHorizontal)
+    private void MoveCar(float inputVertical, float inputHorizontal)
     {
+        var isGoingInt = Convert.ToInt32(currentSpeed >= 0);
         currentSpeed = inputVertical switch
         {
-            > 0 => Mathf.MoveTowards(currentSpeed, maxSpeed, acceleration * Time.deltaTime),
-            < 0 => Mathf.MoveTowards(currentSpeed, -maxSpeed / 2, acceleration * Time.deltaTime),
+            > 0 => Mathf.MoveTowards(currentSpeed, maxSpeed,
+                acceleration * (2 - isGoingInt) * Time.deltaTime),
+            < 0 => Mathf.MoveTowards(currentSpeed, -maxSpeed / 2,
+                acceleration * (isGoingInt + 1) * Time.deltaTime),
             _ => Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.deltaTime)
         };
-        nnSpeed = currentSpeed / maxSpeed;
+        _nnSpeed = currentSpeed / maxSpeed;
 
         currentAcceleration = (currentSpeed - _lastSpeed) / Time.deltaTime;
-        nnAcceleration = currentAcceleration / acceleration;
+        _nnAcceleration = currentAcceleration / acceleration * 2;
 
         transform.Translate(Vector3.forward * (currentSpeed * Time.deltaTime));
         if (currentSpeed != 0)
