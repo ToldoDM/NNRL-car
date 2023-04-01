@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CarController : MonoBehaviour
 {
-    private Vector3 startPosition, startRotation;
-    private readonly int _distanceDivision = 30;
+    private Vector3 _startPosition, _startRotation;
+    private const int DistanceDivision = 10;
+    private const float MaxRayDistance = 10f;
 
     [Header("CurrentStats")] public float currentSpeed;
     public float currentAcceleration;
+    public float nnAcceleration;
+    public float nnSpeed;
     public float timeSinceStart = 0f;
     public float overallFitness;
 
@@ -17,35 +21,38 @@ public class CarController : MonoBehaviour
     public float deceleration = 2f;
     public float turnSpeed = 0.02f;
 
-    [Header("Fitness")] public float distanceMultipler = 1.4f;
+    [Header("Fitness")] public float distanceMultiplier = 1.4f;
     public float avgSpeedMultiplier = 0.2f;
     public float sensorMultiplier = 0.1f;
 
-    private Vector3 lastPosition;
-    private float lastSpeed = 0f;
-    private float totalDistanceTravelled;
-    private float avgSpeed;
+    private Vector3 _lastPosition;
+    private float _lastSpeed = 0f;
+    private float _totalDistanceTravelled;
+    private float _totalDistanceForward;
+    private float _avgSpeed;
 
-    private float aSensor, bSensor, cSensor;
+    private float _aSensor, _bSensor, _cSensor, _dSensor, _eSensor;
 
     private void Awake()
     {
-        startPosition = transform.position;
-        startRotation = transform.eulerAngles;
+        var transform1 = transform;
+        _startPosition = transform1.position;
+        _startRotation = transform1.eulerAngles;
     }
 
     public void Reset()
     {
+        var transform1 = transform;
         currentSpeed = 0f;
         currentAcceleration = 0f;
         timeSinceStart = 0f;
-        totalDistanceTravelled = 0f;
-        avgSpeed = 0f;
-        lastPosition = startPosition;
-        lastSpeed = 0f;
+        _totalDistanceTravelled = 0f;
+        _avgSpeed = 0f;
+        _lastPosition = _startPosition;
+        _lastSpeed = 0f;
         overallFitness = 0f;
-        transform.position = startPosition;
-        transform.eulerAngles = startRotation;
+        transform1.position = _startPosition;
+        transform1.eulerAngles = _startRotation;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -59,13 +66,13 @@ public class CarController : MonoBehaviour
     private void FixedUpdate()
     {
         InputSensors();
-        lastPosition = transform.position;
+        _lastPosition = transform.position;
 
         //Neural network code here
 
         MoveCar();
-        lastSpeed = currentSpeed;
-        
+        _lastSpeed = currentSpeed;
+
         timeSinceStart += Time.deltaTime;
 
         CalculateFitness();
@@ -74,11 +81,15 @@ public class CarController : MonoBehaviour
 
     private void CalculateFitness()
     {
-        totalDistanceTravelled += Vector3.Distance(transform.position, lastPosition);
-        avgSpeed = totalDistanceTravelled / timeSinceStart;
+        var currentDistance = Vector3.Distance(transform.position, _lastPosition);
+        _totalDistanceForward = (currentSpeed >= 0)
+            ? _totalDistanceForward + currentDistance
+            : _totalDistanceForward - currentDistance;
+        _totalDistanceTravelled += currentDistance;
+        _avgSpeed = _totalDistanceTravelled / timeSinceStart;
 
-        overallFitness = (totalDistanceTravelled * distanceMultipler) + (avgSpeed * avgSpeedMultiplier) +
-                         (((aSensor + bSensor + cSensor) / 3) * sensorMultiplier);
+        overallFitness = (_totalDistanceForward * distanceMultiplier) + (_avgSpeed * avgSpeedMultiplier) +
+                         (((_aSensor + _bSensor + _cSensor + _dSensor + _eSensor) / 5) * sensorMultiplier);
 
         if (timeSinceStart > 20 && overallFitness < 40)
         {
@@ -97,62 +108,58 @@ public class CarController : MonoBehaviour
         var transform1 = transform;
         var forward = transform1.forward;
         var right = transform1.right;
-        Vector3 rayRight = (forward + right);
+        var ninetyDeg = new Vector3(90, 0);
         Vector3 rayTop = (forward);
-        Vector3 rayLeft = (forward - right);
+        Vector3 rayTopRight = (forward + right);
+        Vector3 rayTopLeft = (forward - right);
+        Vector3 rayRight = (forward + ninetyDeg);
+        Vector3 rayLeft = (forward - ninetyDeg);
 
-        Ray r = new Ray(transform1.position, rayRight);
-        RaycastHit hit;
-
-        if (Physics.Raycast(r, out hit))
-        {
-            aSensor = hit.distance / _distanceDivision;
-            Debug.DrawLine(r.origin, hit.point, Color.red);
-            // print("rayRight: " + aSensor);
-        }
-
-        r.direction = rayTop;
-
-        if (Physics.Raycast(r, out hit))
-        {
-            bSensor = hit.distance / _distanceDivision;
-            Debug.DrawLine(r.origin, hit.point, Color.red);
-            // print("rayTop: " + bSensor);
-        }
-
+        Ray r = new Ray(transform1.position, rayTop);
+        _aSensor = RayCastRays(r);
+        r.direction = rayTopRight;
+        _bSensor = RayCastRays(r);
+        r.direction = rayTopLeft;
+        _cSensor = RayCastRays(r);
+        r.direction = rayRight;
+        _dSensor = RayCastRays(r);
         r.direction = rayLeft;
+        _eSensor = RayCastRays(r);
 
-        if (Physics.Raycast(r, out hit))
+        // print("rayRight: " + aSensor);
+        // print("rayTop: " + bSensor);
+        // print("rayLeft: " + cSensor);
+    }
+
+    private float RayCastRays(Ray r)
+    {
+        RaycastHit hit;
+        if (!Physics.Raycast(r, out hit, MaxRayDistance))
         {
-            cSensor = hit.distance / _distanceDivision;
-            Debug.DrawLine(r.origin, hit.point, Color.red);
-            // print("rayLeft: " + cSensor);
+            return 1;
         }
+
+        Debug.DrawLine(r.origin, hit.point, Color.red);
+        return hit.distance / DistanceDivision;
     }
 
     private void MoveCar()
     {
-        float inputVertical = Input.GetAxis("Vertical");
-        float inputHorizontal = Input.GetAxis("Horizontal");
+        var inputVertical = Input.GetAxis("Vertical");
+        var inputHorizontal = Input.GetAxis("Horizontal");
 
-        currentAcceleration = (currentSpeed - lastSpeed) / Time.deltaTime;
-        // print(currentAcceleration);
-        if (inputVertical > 0)
+        currentSpeed = inputVertical switch
         {
-            currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, acceleration * Time.deltaTime);
-        }
-        else if (inputVertical < 0)
-        {
-            currentSpeed = Mathf.MoveTowards(currentSpeed, -maxSpeed / 2, acceleration * Time.deltaTime);
-        }
-        else
-        {
-            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.deltaTime);
-        }
-        currentAcceleration = (currentSpeed - lastSpeed) / Time.deltaTime;
+            > 0 => Mathf.MoveTowards(currentSpeed, maxSpeed, acceleration * Time.deltaTime),
+            < 0 => Mathf.MoveTowards(currentSpeed, -maxSpeed / 2, acceleration * Time.deltaTime),
+            _ => Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.deltaTime)
+        };
+        nnSpeed = currentSpeed / maxSpeed;
+
+        currentAcceleration = (currentSpeed - _lastSpeed) / Time.deltaTime;
+        nnAcceleration = currentAcceleration / acceleration;
 
         transform.Translate(Vector3.forward * (currentSpeed * Time.deltaTime));
-
         if (currentSpeed != 0)
         {
             transform.eulerAngles += new Vector3(0, (inputHorizontal * 90) * turnSpeed, 0);
