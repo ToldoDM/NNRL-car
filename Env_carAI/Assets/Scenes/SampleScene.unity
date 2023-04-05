@@ -2953,11 +2953,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2396051677423697054, guid: ab0d819a41324ec5abfb3aea32f90677, type: 3}
       propertyPath: gateMultiplier
-      value: 200
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2396051677423697054, guid: ab0d819a41324ec5abfb3aea32f90677, type: 3}
       propertyPath: distanceMultiplier
-      value: 2000
+      value: 1.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab0d819a41324ec5abfb3aea32f90677, type: 3}

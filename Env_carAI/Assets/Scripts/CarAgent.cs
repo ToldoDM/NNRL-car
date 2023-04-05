@@ -17,7 +17,12 @@ public class CarAgent : Agent
     [Header("CurrentStats")] public float currentSpeed;
     public float currentAcceleration;
     public float timeSinceLastCheckpoint = 0f;
+
     public float distanceTraveledSinceCheckpoint = 0f;
+
+    public float distanceToNextGate = -1f;
+    public float distanceToPrevGate = -1f;
+    public float overallFitness = 0f;
 
     [Header("CarStats")] public float maxSpeed = 11.4f;
     public float acceleration = 5f;
@@ -28,14 +33,19 @@ public class CarAgent : Agent
     public float distanceMultiplier = 1.4f;
     public float speedMultiplier = 0.2f;
     public float gateMultiplier = 1f;
+    public int giveReward = 0;
 
     private Vector3 _lastPosition;
     private float _lastSpeed = 0f;
     private int _lastCheckpoint = -1;
+    private string _spawnName = "";
+    private Vector3 _nextGatePosition = Vector3.zero;
+    private Vector3 _prevGatePosition = Vector3.zero;
+    private float _prevDistanceToNextGate = 0f;
 
     public override void OnEpisodeBegin()
     {
-        GetRandomPosition();
+        Reset();
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -44,6 +54,8 @@ public class CarAgent : Agent
         sensor.AddObservation(currentAcceleration);
         sensor.AddObservation(timeSinceLastCheckpoint);
         sensor.AddObservation(distanceTraveledSinceCheckpoint);
+        sensor.AddObservation(distanceToNextGate);
+        sensor.AddObservation(distanceToPrevGate);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -62,7 +74,6 @@ public class CarAgent : Agent
         };
         MoveCar(a, s);
         currentReward = CalculateReward();
-        AddReward(currentReward);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -84,45 +95,81 @@ public class CarAgent : Agent
 
     public void Reset()
     {
-        GetRandomPosition();
         currentSpeed = 0f;
         currentAcceleration = 0f;
         _lastSpeed = 0f;
         _lastCheckpoint = -1;
         timeSinceLastCheckpoint = 0f;
         distanceTraveledSinceCheckpoint = 0f;
+        giveReward = 0;
+        _spawnName = "";
+        distanceToNextGate = -1f;
+        distanceToPrevGate = -1f;
+        _nextGatePosition = Vector3.zero;
+        _prevGatePosition = Vector3.zero;
+        overallFitness = 0f;
+        GetRandomPosition();
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "Spawn":
+                if (other.name == _spawnName)
+                {
+                    giveReward = 1;
+                }
+
+                break;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("checkpoints"))
+        switch (other.tag)
         {
-            HandleCheckpoint(other.gameObject.transform);
-        }
-        else
-        {
-            AddReward(-10f);
-            Reset();
-            EndEpisode();
+            case "checkpoints":
+                HandleCheckpoint(other.gameObject.transform);
+                break;
+            case "Spawn":
+                if (_spawnName == "")
+                {
+                    _spawnName = other.name;
+                    giveReward = 0;
+                }
+
+                break;
+            default:
+                AddReward(-10f);
+                overallFitness += -10f;
+                EndEpisode();
+                Reset();
+                break;
         }
     }
 
     private void FixedUpdate()
     {
         timeSinceLastCheckpoint += Time.deltaTime;
+        var position = transform.position;
+        distanceToNextGate = Vector3.Distance(position, _nextGatePosition);
+        distanceToPrevGate = Vector3.Distance(position, _prevGatePosition);
+        Debug.DrawLine(position, _nextGatePosition, Color.magenta);
+        Debug.DrawLine(position, _prevGatePosition, Color.blue);
+        AddReward((_prevDistanceToNextGate - distanceToNextGate));
+        overallFitness += ((_prevDistanceToNextGate - distanceToNextGate));
+        _prevDistanceToNextGate = distanceToNextGate;
+
+        if (timeSinceLastCheckpoint <= 10f) return;
+        EndEpisode();
+        Reset();
     }
 
     private void HandleCheckpoint(Transform checkpoint)
     {
         var index = checkpoints.IndexOf(checkpoint);
-        if (_lastCheckpoint < 0)
-        {
-            _lastCheckpoint = index;
-            timeSinceLastCheckpoint = 0f;
-            distanceTraveledSinceCheckpoint = 0f;
-            AddReward(1f * gateMultiplier);
-            return;
-        }
 
         if (index != (_lastCheckpoint + 1) % checkpoints.Count)
         {
@@ -133,6 +180,7 @@ public class CarAgent : Agent
             }
 
             AddReward((float)-Math.Pow(2, exponent) + 1);
+            overallFitness += (float)-Math.Pow(2, exponent) + 1;
         }
         else
         {
@@ -140,9 +188,10 @@ public class CarAgent : Agent
             AddReward(reward < 1
                 ? 1 * gateMultiplier
                 : reward * gateMultiplier);
-            _lastCheckpoint = index;
-            timeSinceLastCheckpoint = 0f;
-            distanceTraveledSinceCheckpoint = 0f;
+            overallFitness += reward < 1
+                ? 1 * gateMultiplier
+                : reward * gateMultiplier;
+            GivePrevNextGate(index);
         }
     }
 
@@ -191,5 +240,30 @@ public class CarAgent : Agent
         carObject.eulerAngles = eulerAngles;
         _lastPosition = position;
         _startRotation = eulerAngles;
+        CalculateNextGate();
+    }
+
+    private void CalculateNextGate()
+    {
+        var closestGate = 0;
+        var minDistance = 10000f;
+        foreach (var cpt in checkpoints)
+        {
+            if (!(Vector3.Distance(transform.position, cpt.position) < minDistance)) continue;
+            minDistance = Vector3.Distance(transform.position, cpt.position);
+            closestGate = checkpoints.IndexOf(cpt);
+        }
+
+        GivePrevNextGate(closestGate);
+    }
+
+    private void GivePrevNextGate(int index)
+    {
+        _lastCheckpoint = index;
+        timeSinceLastCheckpoint = 0f;
+        distanceTraveledSinceCheckpoint = 0f;
+        _nextGatePosition = checkpoints[(_lastCheckpoint + 1) % checkpoints.Count].position;
+        _prevGatePosition = checkpoints[(_lastCheckpoint + checkpoints.Count - 1) % checkpoints.Count].position;
+        _prevDistanceToNextGate = Vector3.Distance(transform.position, _nextGatePosition);
     }
 }
