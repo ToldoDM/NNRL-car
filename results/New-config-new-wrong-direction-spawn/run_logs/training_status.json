@@ -1,0 +1,479 @@
+{
+    "Car": {
+        "checkpoints": [
+            {
+                "steps": 99948,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-99948.onnx",
+                "reward": null,
+                "creation_time": 1680786704.6385396,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-99948.pt"
+                ]
+            },
+            {
+                "steps": 199985,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-199985.onnx",
+                "reward": -1.166970920562744,
+                "creation_time": 1680786746.7356925,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-199985.pt"
+                ]
+            },
+            {
+                "steps": 299942,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-299942.onnx",
+                "reward": 0.284747804914202,
+                "creation_time": 1680786791.8976371,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-299942.pt"
+                ]
+            },
+            {
+                "steps": 399978,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-399978.onnx",
+                "reward": -0.5021529456843501,
+                "creation_time": 1680786835.872447,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-399978.pt"
+                ]
+            },
+            {
+                "steps": 499989,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-499989.onnx",
+                "reward": -0.7335801949867835,
+                "creation_time": 1680786878.8073246,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-499989.pt"
+                ]
+            },
+            {
+                "steps": 599960,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-599960.onnx",
+                "reward": 0.04905564444405692,
+                "creation_time": 1680786921.5366282,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-599960.pt"
+                ]
+            },
+            {
+                "steps": 699970,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-699970.onnx",
+                "reward": 0.21906763315200806,
+                "creation_time": 1680786964.4411256,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-699970.pt"
+                ]
+            },
+            {
+                "steps": 799967,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-799967.onnx",
+                "reward": 2.81126620219304,
+                "creation_time": 1680787006.589472,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-799967.pt"
+                ]
+            },
+            {
+                "steps": 899945,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-899945.onnx",
+                "reward": 1.2715377807617188,
+                "creation_time": 1680787052.092219,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-899945.pt"
+                ]
+            },
+            {
+                "steps": 999971,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-999971.onnx",
+                "reward": 9.109421104192734,
+                "creation_time": 1680787095.508429,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-999971.pt"
+                ]
+            },
+            {
+                "steps": 1099998,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-1099998.onnx",
+                "reward": 5.8745384720655585,
+                "creation_time": 1680787136.9905512,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-1099998.pt"
+                ]
+            },
+            {
+                "steps": 1199977,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-1199977.onnx",
+                "reward": 10.141353781406696,
+                "creation_time": 1680787180.1011436,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-1199977.pt"
+                ]
+            },
+            {
+                "steps": 1299984,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-1299984.onnx",
+                "reward": 29.737280981881277,
+                "creation_time": 1680787224.9775538,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-1299984.pt"
+                ]
+            },
+            {
+                "steps": 1399942,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-1399942.onnx",
+                "reward": 5.346607685089111,
+                "creation_time": 1680787271.2760558,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-1399942.pt"
+                ]
+            },
+            {
+                "steps": 1499965,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-1499965.onnx",
+                "reward": 20.454424288868903,
+                "creation_time": 1680787313.0825403,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-1499965.pt"
+                ]
+            },
+            {
+                "steps": 1599961,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-1599961.onnx",
+                "reward": 9.709014784206044,
+                "creation_time": 1680787357.4527974,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-1599961.pt"
+                ]
+            },
+            {
+                "steps": 1699964,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-1699964.onnx",
+                "reward": 33.3186767578125,
+                "creation_time": 1680787401.5905688,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-1699964.pt"
+                ]
+            },
+            {
+                "steps": 1799950,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-1799950.onnx",
+                "reward": -0.047019243240356445,
+                "creation_time": 1680787445.8499682,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-1799950.pt"
+                ]
+            },
+            {
+                "steps": 1899955,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-1899955.onnx",
+                "reward": 32.83898595968882,
+                "creation_time": 1680787487.2315145,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-1899955.pt"
+                ]
+            },
+            {
+                "steps": 1999969,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-1999969.onnx",
+                "reward": 23.911964972813923,
+                "creation_time": 1680787531.366896,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-1999969.pt"
+                ]
+            },
+            {
+                "steps": 2099939,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-2099939.onnx",
+                "reward": 26.48634401957194,
+                "creation_time": 1680787575.1577978,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-2099939.pt"
+                ]
+            },
+            {
+                "steps": 2199992,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-2199992.onnx",
+                "reward": 26.873767892519634,
+                "creation_time": 1680787619.386284,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-2199992.pt"
+                ]
+            },
+            {
+                "steps": 2299982,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-2299982.onnx",
+                "reward": 26.30614944299062,
+                "creation_time": 1680787663.8231986,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-2299982.pt"
+                ]
+            },
+            {
+                "steps": 2399985,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-2399985.onnx",
+                "reward": 49.79501271247864,
+                "creation_time": 1680787708.1529706,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-2399985.pt"
+                ]
+            },
+            {
+                "steps": 2499978,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-2499978.onnx",
+                "reward": 0.06256628036499023,
+                "creation_time": 1680787752.6178484,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-2499978.pt"
+                ]
+            },
+            {
+                "steps": 2599969,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-2599969.onnx",
+                "reward": 37.556918404996395,
+                "creation_time": 1680787795.2177022,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-2599969.pt"
+                ]
+            },
+            {
+                "steps": 2699951,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-2699951.onnx",
+                "reward": 161.53982062339782,
+                "creation_time": 1680787839.2385395,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-2699951.pt"
+                ]
+            },
+            {
+                "steps": 2799960,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-2799960.onnx",
+                "reward": 113.21501994132996,
+                "creation_time": 1680787883.2042634,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-2799960.pt"
+                ]
+            },
+            {
+                "steps": 2899983,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-2899983.onnx",
+                "reward": 151.40235925804484,
+                "creation_time": 1680787926.5552914,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-2899983.pt"
+                ]
+            },
+            {
+                "steps": 2999949,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-2999949.onnx",
+                "reward": 48.838135282198586,
+                "creation_time": 1680787971.4509406,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-2999949.pt"
+                ]
+            },
+            {
+                "steps": 3099983,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-3099983.onnx",
+                "reward": 226.60676713784537,
+                "creation_time": 1680788017.9591157,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-3099983.pt"
+                ]
+            },
+            {
+                "steps": 3199944,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-3199944.onnx",
+                "reward": null,
+                "creation_time": 1680788062.0860925,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-3199944.pt"
+                ]
+            },
+            {
+                "steps": 3299989,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-3299989.onnx",
+                "reward": 310.1511977672577,
+                "creation_time": 1680788105.4455304,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-3299989.pt"
+                ]
+            },
+            {
+                "steps": 3399993,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-3399993.onnx",
+                "reward": 112.80590438842773,
+                "creation_time": 1680788151.025266,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-3399993.pt"
+                ]
+            },
+            {
+                "steps": 3499980,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-3499980.onnx",
+                "reward": 551.8555936018626,
+                "creation_time": 1680788194.5806704,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-3499980.pt"
+                ]
+            },
+            {
+                "steps": 3599979,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-3599979.onnx",
+                "reward": 5.28926911354065,
+                "creation_time": 1680788237.2994692,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-3599979.pt"
+                ]
+            },
+            {
+                "steps": 3699989,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-3699989.onnx",
+                "reward": 830.5382361412048,
+                "creation_time": 1680788281.0495303,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-3699989.pt"
+                ]
+            },
+            {
+                "steps": 3799988,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-3799988.onnx",
+                "reward": 577.2416462898254,
+                "creation_time": 1680788325.397249,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-3799988.pt"
+                ]
+            },
+            {
+                "steps": 3899994,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-3899994.onnx",
+                "reward": null,
+                "creation_time": 1680788370.8544567,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-3899994.pt"
+                ]
+            },
+            {
+                "steps": 3999949,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-3999949.onnx",
+                "reward": 171.30732655525208,
+                "creation_time": 1680788413.3000188,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-3999949.pt"
+                ]
+            },
+            {
+                "steps": 4099989,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-4099989.onnx",
+                "reward": 50.03773379325867,
+                "creation_time": 1680788457.6981652,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-4099989.pt"
+                ]
+            },
+            {
+                "steps": 4199985,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-4199985.onnx",
+                "reward": null,
+                "creation_time": 1680788501.658256,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-4199985.pt"
+                ]
+            },
+            {
+                "steps": 4299987,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-4299987.onnx",
+                "reward": 549.6440488894781,
+                "creation_time": 1680788546.9363194,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-4299987.pt"
+                ]
+            },
+            {
+                "steps": 4399955,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-4399955.onnx",
+                "reward": 245.5007815361023,
+                "creation_time": 1680788594.0150023,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-4399955.pt"
+                ]
+            },
+            {
+                "steps": 4499997,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-4499997.onnx",
+                "reward": 284.36803102493286,
+                "creation_time": 1680788641.2778583,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-4499997.pt"
+                ]
+            },
+            {
+                "steps": 4599971,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-4599971.onnx",
+                "reward": -21.24233102798462,
+                "creation_time": 1680788688.0801032,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-4599971.pt"
+                ]
+            },
+            {
+                "steps": 4699947,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-4699947.onnx",
+                "reward": -13.492238283157349,
+                "creation_time": 1680788734.353283,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-4699947.pt"
+                ]
+            },
+            {
+                "steps": 4799980,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-4799980.onnx",
+                "reward": null,
+                "creation_time": 1680788778.8504007,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-4799980.pt"
+                ]
+            },
+            {
+                "steps": 4899974,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-4899974.onnx",
+                "reward": 704.7005217075348,
+                "creation_time": 1680788823.3791533,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-4899974.pt"
+                ]
+            },
+            {
+                "steps": 4999959,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-4999959.onnx",
+                "reward": 1385.3079417943954,
+                "creation_time": 1680788866.589781,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-4999959.pt"
+                ]
+            },
+            {
+                "steps": 5000151,
+                "file_path": "results/New-config-new-wrong-direction-spawn/Car/Car-5000151.onnx",
+                "reward": 1385.3079417943954,
+                "creation_time": 1680788866.64352,
+                "auxillary_file_paths": [
+                    "results/New-config-new-wrong-direction-spawn/Car/Car-5000151.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000151,
+            "file_path": "results/New-config-new-wrong-direction-spawn/Car.onnx",
+            "reward": 1385.3079417943954,
+            "creation_time": 1680788866.64352,
+            "auxillary_file_paths": [
+                "results/New-config-new-wrong-direction-spawn/Car/Car-5000151.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0+cu113"
+    }
+}
