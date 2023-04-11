@@ -1,0 +1,191 @@
+{
+    "Car": {
+        "checkpoints": [
+            {
+                "steps": 99967,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-99967.onnx",
+                "reward": null,
+                "creation_time": 1680707306.2227414,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-99967.pt"
+                ]
+            },
+            {
+                "steps": 199983,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-199983.onnx",
+                "reward": 4.035126173496247,
+                "creation_time": 1680707346.6533525,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-199983.pt"
+                ]
+            },
+            {
+                "steps": 299944,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-299944.onnx",
+                "reward": 28.762244880199432,
+                "creation_time": 1680707388.00192,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-299944.pt"
+                ]
+            },
+            {
+                "steps": 399978,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-399978.onnx",
+                "reward": 128.81604313850403,
+                "creation_time": 1680707429.6980605,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-399978.pt"
+                ]
+            },
+            {
+                "steps": 499968,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-499968.onnx",
+                "reward": 91.11184051036835,
+                "creation_time": 1680707471.6227074,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-499968.pt"
+                ]
+            },
+            {
+                "steps": 599960,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-599960.onnx",
+                "reward": 9.27484381198883,
+                "creation_time": 1680707518.8138196,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-599960.pt"
+                ]
+            },
+            {
+                "steps": 699969,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-699969.onnx",
+                "reward": -0.5125459432601929,
+                "creation_time": 1680707561.8251536,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-699969.pt"
+                ]
+            },
+            {
+                "steps": 799970,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-799970.onnx",
+                "reward": 5.079476920041171,
+                "creation_time": 1680707602.2428732,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-799970.pt"
+                ]
+            },
+            {
+                "steps": 899962,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-899962.onnx",
+                "reward": 5.951983571052551,
+                "creation_time": 1680707643.714296,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-899962.pt"
+                ]
+            },
+            {
+                "steps": 999970,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-999970.onnx",
+                "reward": 0.004406876034206814,
+                "creation_time": 1680707686.0918376,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-999970.pt"
+                ]
+            },
+            {
+                "steps": 1099958,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-1099958.onnx",
+                "reward": null,
+                "creation_time": 1680707731.6358247,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-1099958.pt"
+                ]
+            },
+            {
+                "steps": 1199963,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-1199963.onnx",
+                "reward": 0.9655293673276901,
+                "creation_time": 1680707774.5983975,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-1199963.pt"
+                ]
+            },
+            {
+                "steps": 1299999,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-1299999.onnx",
+                "reward": 0.007745027542114258,
+                "creation_time": 1680707818.618593,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-1299999.pt"
+                ]
+            },
+            {
+                "steps": 1399999,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-1399999.onnx",
+                "reward": 0.007049560546875,
+                "creation_time": 1680707861.936345,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-1399999.pt"
+                ]
+            },
+            {
+                "steps": 1499999,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-1499999.onnx",
+                "reward": 0.0061433762311935425,
+                "creation_time": 1680707904.108688,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-1499999.pt"
+                ]
+            },
+            {
+                "steps": 1599975,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-1599975.onnx",
+                "reward": 0.006667882204055786,
+                "creation_time": 1680707950.2332802,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-1599975.pt"
+                ]
+            },
+            {
+                "steps": 1699963,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-1699963.onnx",
+                "reward": 0.005667924880981445,
+                "creation_time": 1680707996.6100137,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-1699963.pt"
+                ]
+            },
+            {
+                "steps": 1799963,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-1799963.onnx",
+                "reward": null,
+                "creation_time": 1680708041.6167207,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-1799963.pt"
+                ]
+            },
+            {
+                "steps": 1832819,
+                "file_path": "results/Test4-Cuda-reward-to-gate/Car/Car-1832819.onnx",
+                "reward": 0.005196571350097656,
+                "creation_time": 1680708057.001922,
+                "auxillary_file_paths": [
+                    "results/Test4-Cuda-reward-to-gate/Car/Car-1832819.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1832819,
+            "file_path": "results/Test4-Cuda-reward-to-gate/Car.onnx",
+            "reward": 0.005196571350097656,
+            "creation_time": 1680708057.001922,
+            "auxillary_file_paths": [
+                "results/Test4-Cuda-reward-to-gate/Car/Car-1832819.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0+cu113"
+    }
+}
