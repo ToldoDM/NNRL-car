@@ -6,24 +6,20 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(NNet))]
 public class CarController : MonoBehaviour
 {
-    private Vector3 _startPosition, _startRotation;
-    private const int DistanceDivision = 10;
-    private const float MaxRayDistance = 10f;
-
     [SerializeField] private List<Transform> spawnPoints;
     [SerializeField] private List<Transform> checkpoints;
 
-    [Header("CurrentStats")] public float currentSpeed;
+    [Header("CurrentStats")] public bool humanControlled = false;
+    public float currentSpeed;
     public float currentAcceleration;
     public float timeSinceLastCheckpoint = 0f;
     public float distanceTraveledSinceCheckpoint = 0f;
     public float distanceToNextGate = -1f;
     public float distanceToPrevGate = -1f;
     public float overallFitness = 0f;
-    public float _nnAcceleration;
-    public float _nnSpeed;
 
     [Header("CarStats")] public float maxSpeed = 11.4f;
     public float acceleration = 5f;
@@ -35,7 +31,19 @@ public class CarController : MonoBehaviour
     public float speedMultiplier = 0.2f;
     public float gateMultiplier = 1f;
     public int giveReward = 0;
+    
+    [Header("Neural Network")]
+    public int inputLayer = 12;
+    public int outputLayer = 2;
 
+    [HideInInspector] public NNet network;
+
+    private Vector3 _startPosition, _startRotation;
+    private const int DistanceDivision = 10;
+    private const float MaxRayDistance = 10f;
+    private float _nnAcceleration;
+    private float _nnSpeed;
+    private List<float> _nnInputs = new List<float>();
     private Vector3 _lastPosition;
     private float _lastSpeed = 0f;
     private int _lastCheckpoint = -1;
@@ -44,12 +52,17 @@ public class CarController : MonoBehaviour
     private Vector3 _prevGatePosition = Vector3.zero;
     private float _prevDistanceToNextGate = 0f;
     private RayPerceptionSensorComponent3D _raySensor;
-    // private List<float> _nnInputs;
+    private const float CheckpointTimeout = 10f;
+    private GeneticManager _manager;
+    private bool _dead = false;
 
     private void Awake()
     {
-        // GameObject.FindObjectOfType<GeneticManager>().AddCar(this);
-        _raySensor = GetComponent<RayPerceptionSensorComponent3D>();
+        network = gameObject.GetComponent<NNet>();
+        _manager = GameObject.FindObjectOfType<GeneticManager>();
+        _raySensor = gameObject.GetComponent<RayPerceptionSensorComponent3D>();
+        network.Initialise(inputLayer, outputLayer);
+        _manager.AddCar(this);
         Reset();
     }
 
@@ -57,6 +70,7 @@ public class CarController : MonoBehaviour
     {
         currentSpeed = 0f;
         currentAcceleration = 0f;
+        _dead = false;
         _lastSpeed = 0f;
         _lastCheckpoint = -1;
         timeSinceLastCheckpoint = 0f;
@@ -69,6 +83,14 @@ public class CarController : MonoBehaviour
         _prevGatePosition = Vector3.zero;
         overallFitness = 0f;
         GetRandomPosition();
+    }
+
+    private void Death()
+    {
+        currentSpeed = 0f;
+        currentAcceleration = 0f;
+        _dead = true;
+        _manager.Death();
     }
 
     private void GetRandomPosition()
@@ -168,17 +190,31 @@ public class CarController : MonoBehaviour
             default:
                 // AddReward(-10f);
                 overallFitness += -10f;
-                Reset();
+                Death();
+                // Reset();
                 break;
         }
     }
 
     private void FixedUpdate()
     {
-        //Human controlled
-        var a = Input.GetAxis("Vertical");
-        var s = Input.GetAxis("Horizontal");
-        MoveCar(a, s);
+        if (_dead) return;
+
+        if (humanControlled)
+        {
+            //Human controlled
+            var a = Input.GetAxis("Vertical");
+            var s = Input.GetAxis("Horizontal");
+            MoveCar(a, s);
+        }
+        else
+        {
+            //Neural network
+            ClearAndAddInputs();
+            var nnOut = network.RunNetwork(_nnInputs);
+            MoveCar(nnOut[0], nnOut[1]);
+        }
+
         currentReward = CalculateReward();
 
         timeSinceLastCheckpoint += Time.deltaTime;
@@ -189,13 +225,29 @@ public class CarController : MonoBehaviour
         Debug.DrawLine(position, _prevGatePosition, Color.blue);
         overallFitness += ((_prevDistanceToNextGate - distanceToNextGate));
         _prevDistanceToNextGate = distanceToNextGate;
-        
-        var raysOut = RayPerceptionSensor.Perceive(_raySensor.GetRayPerceptionInput()).RayOutputs;
-        // print("0:"+raysOut[0].HitFraction + "; 1:"+raysOut[1].HitFraction+ "; 2:"+raysOut[2].HitFraction
-        //       + "; 3:"+raysOut[3].HitFraction+ "; 4:"+raysOut[4].HitFraction+ "; 5:"+raysOut[5].HitFraction+ "; 6:"+raysOut[6].HitFraction);
 
-        // if (timeSinceLastCheckpoint <= 10f && overallFitness < 3000) return;
+        if (timeSinceLastCheckpoint <= CheckpointTimeout && overallFitness < 3000) return;
+        Death();
         // Reset();
+    }
+
+    private void ClearAndAddInputs()
+    {
+        var raysOut = RayPerceptionSensor.Perceive(_raySensor.GetRayPerceptionInput()).RayOutputs;
+        // Add observations
+        _nnInputs.Clear();
+        _nnInputs.Add(raysOut[0].HitFraction);
+        _nnInputs.Add(raysOut[1].HitFraction);
+        _nnInputs.Add(raysOut[2].HitFraction);
+        _nnInputs.Add(raysOut[3].HitFraction);
+        _nnInputs.Add(raysOut[4].HitFraction);
+        _nnInputs.Add(raysOut[5].HitFraction);
+        _nnInputs.Add(raysOut[6].HitFraction);
+        _nnInputs.Add(_nnSpeed);
+        _nnInputs.Add(_nnAcceleration);
+        _nnInputs.Add(distanceTraveledSinceCheckpoint / 20f);
+        _nnInputs.Add(distanceToNextGate / 20f);
+        _nnInputs.Add(distanceToPrevGate / 30f);
     }
 
     private float CalculateReward()
@@ -222,7 +274,7 @@ public class CarController : MonoBehaviour
             _ => Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.deltaTime)
         };
         _nnSpeed = currentSpeed / maxSpeed;
-        
+
         currentAcceleration = (currentSpeed - _lastSpeed) / Time.deltaTime;
         _nnAcceleration = currentAcceleration / (acceleration * 2);
 
