@@ -29,7 +29,7 @@ public class NNet : MonoBehaviour
         _weights.Clear();
         biases.Clear();
 
-        for (var i = 0; i < layers + 1; i++)
+        for (var i = 0; i < layers; i++)
         {
             var f = Matrix<float>.Build.Dense(1, neurons);
 
@@ -104,15 +104,15 @@ public class NNet : MonoBehaviour
                     // mix the weight from parent1 and parent2 with a probability of totally new weight
                     if (Random.value > mutationPb)
                     {
-                        // if (Random.value > 0.5f)
-                        // {
-                        //     _weights[i][x, y] = p1._weights[i][x, y];
-                        // }
-                        // else
-                        // {
-                        //     _weights[i][x, y] = p2._weights[i][x, y];
-                        // }
-                        _weights[i][x, y] = (p1._weights[i][x, y] + p2._weights[i][x, y]) / 2;
+                        if (Random.value > 0.5f)
+                        {
+                            _weights[i][x, y] = p1._weights[i][x, y];
+                        }
+                        else
+                        {
+                            _weights[i][x, y] = p2._weights[i][x, y];
+                        }
+                        // _weights[i][x, y] = (p1._weights[i][x, y] + p2._weights[i][x, y]) / 2;
                     }
                     else
                     {
@@ -130,7 +130,8 @@ public class NNet : MonoBehaviour
                 if (Random.value > 0.5f)
                     biases[i] = p1.biases[i];
                 else
-                    biases[i] = p2.biases[i];
+                    biases[i] =  p2.biases[i];
+                // biases[i] = (p1.biases[i] + p2.biases[i]) / 2;
             }
             else
             {
@@ -149,7 +150,7 @@ public class NNet : MonoBehaviour
         RandomiseWeights();
     }
 
-    public void SaveToCSV(string filePath, int car, int gen)
+    public void SaveToCsv(string filePath, int car, int gen)
     {
         // Create a new StreamWriter object and open the file
         using (StreamWriter writer = new StreamWriter(filePath + "NNet_Gen" + gen + "_Car" + car + ".csv"))

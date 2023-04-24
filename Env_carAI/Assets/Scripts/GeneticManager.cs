@@ -6,10 +6,10 @@ using System.IO;
 
 public class GeneticManager : MonoBehaviour
 {
-    [Header("Controls")] [Range(0.0f, 1.0f)]
+    [Header("Controls")] [Range(0.0f, 0.1f)]
     public float mutationRate = 0.055f;
 
-    [Range(0.0f, 1.0f)] public float randomChild = 0.055f;
+    [Range(0.0f, 0.05f)] public float randomChild = 0.055f;
 
     [Header("Crossover Controls")] [Range(0, 100)]
     public int bestAgentSelectionPercent = 20;
@@ -82,7 +82,7 @@ public class GeneticManager : MonoBehaviour
         var topPercentList = GetTopPercent();
         for (var i = 0; i < topPercentList.Count; i++)
         {
-            topPercentList[i].network.SaveToCSV("GA_training/", i, currentGeneration);
+            topPercentList[i].network.SaveToCsv("GA_training/", i, currentGeneration);
         }
     }
 
@@ -121,9 +121,11 @@ public class GeneticManager : MonoBehaviour
     private void NextGeneration()
     {
         currentGeneration++;
+        // always same spawn point for everyone
+        var index = 1;//Random.Range(0, _population[0].spawnPoints.Count);
         foreach (var car in _population)
         {
-            car.Reset();
+            car.Reset(index);
         }
     }
 }

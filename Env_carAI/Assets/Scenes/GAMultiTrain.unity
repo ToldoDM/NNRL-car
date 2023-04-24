@@ -3692,12 +3692,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mutationRate: 0.055
-  randomChild: 0.055
+  randomChild: 0
   bestAgentSelectionPercent: 5
   currentGeneration: 0
   initialPopulation: 0
   currentPopulation: 0
-  nNetSavingInterval: 10
+  nNetSavingInterval: 100
 --- !u!4 &956426128
 Transform:
   m_ObjectHideFlags: 0

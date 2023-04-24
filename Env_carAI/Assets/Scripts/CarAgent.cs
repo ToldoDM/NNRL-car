@@ -52,7 +52,7 @@ public class CarAgent : Agent
     {
         sensor.AddObservation(currentSpeed);
         sensor.AddObservation(currentAcceleration);
-        sensor.AddObservation(timeSinceLastCheckpoint);
+        // sensor.AddObservation(timeSinceLastCheckpoint);
         sensor.AddObservation(distanceTraveledSinceCheckpoint);
         sensor.AddObservation(distanceToNextGate);
         sensor.AddObservation(distanceToPrevGate);

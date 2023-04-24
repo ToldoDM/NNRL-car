@@ -9,8 +9,8 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(NNet))]
 public class CarController : MonoBehaviour
 {
-    [SerializeField] private List<Transform> spawnPoints;
-    [SerializeField] private List<Transform> checkpoints;
+    [SerializeField] public List<Transform> spawnPoints;
+    [SerializeField] public List<Transform> checkpoints;
 
     [Header("CurrentStats")] public bool humanControlled = false;
     public float currentSpeed;
@@ -63,10 +63,10 @@ public class CarController : MonoBehaviour
         _raySensor = gameObject.GetComponent<RayPerceptionSensorComponent3D>();
         network.Initialise(inputLayer, outputLayer);
         _manager.AddCar(this);
-        Reset();
+        Reset(Random.Range(0, spawnPoints.Count));
     }
 
-    public void Reset()
+    public void Reset(int spawnPointIndex)
     {
         currentSpeed = 0f;
         currentAcceleration = 0f;
@@ -82,7 +82,7 @@ public class CarController : MonoBehaviour
         _nextGatePosition = Vector3.zero;
         _prevGatePosition = Vector3.zero;
         overallFitness = 0f;
-        GetRandomPosition();
+        GetRandomPosition(spawnPointIndex);
     }
 
     private void Death()
@@ -93,10 +93,10 @@ public class CarController : MonoBehaviour
         _manager.Death();
     }
 
-    private void GetRandomPosition()
+    private void GetRandomPosition(int spawnPointIndex)
     {
         var carObject = transform;
-        var spawnTransform = spawnPoints[Random.Range(0, spawnPoints.Count)];
+        var spawnTransform = spawnPoints[spawnPointIndex]; //Random.Range(0, spawnPoints.Count)];
         var position = spawnTransform.position;
         var eulerAngles = spawnTransform.eulerAngles;
         carObject.position = position;
