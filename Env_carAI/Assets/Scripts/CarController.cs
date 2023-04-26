@@ -11,6 +11,7 @@ public class CarController : MonoBehaviour
 {
     [SerializeField] public List<Transform> spawnPoints;
     [SerializeField] public List<Transform> checkpoints;
+    [SerializeField] public TextAsset nnet;
 
     [Header("CurrentStats")] public bool humanControlled = false;
     public float currentSpeed;
@@ -62,8 +63,10 @@ public class CarController : MonoBehaviour
         _manager = GameObject.FindObjectOfType<GeneticManager>();
         _raySensor = gameObject.GetComponent<RayPerceptionSensorComponent3D>();
         network.Initialise(inputLayer, outputLayer);
+        if(nnet != null)
+            network.LoadNet(nnet.text);
         _manager.AddCar(this);
-        Reset(Random.Range(0, spawnPoints.Count));
+        Reset(5); //Random.Range(0, spawnPoints.Count));
     }
 
     public void Reset(int spawnPointIndex)

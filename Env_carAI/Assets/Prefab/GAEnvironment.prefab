@@ -3002,6 +3002,7 @@ MonoBehaviour:
   - {fileID: 2396051678357318819}
   - {fileID: 2396051678099108437}
   - {fileID: 8893525592067240344}
+  nnet: {fileID: 0}
   humanControlled: 0
   currentSpeed: 0
   currentAcceleration: 0
@@ -3060,7 +3061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b640976c25d03482582de079d787c441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layers: 4
+  layers: 2
   neurons: 10
   biases: []
 --- !u!1 &2396051677456135483

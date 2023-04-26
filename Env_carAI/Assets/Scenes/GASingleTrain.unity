@@ -155,10 +155,10 @@ MonoBehaviour:
   mutationRate: 0.055
   randomChild: 0.1
   bestAgentSelectionPercent: 10
-  numberToCrossover: 0
   currentGeneration: 0
   initialPopulation: 0
   currentPopulation: 0
+  nNetSavingInterval: 100
 --- !u!4 &1517417412
 Transform:
   m_ObjectHideFlags: 0
@@ -181,6 +181,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1437021107093343900, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
+      propertyPath: nnet
+      value: 
+      objectReference: {fileID: 4900000, guid: 33d530c9b4b4b3577b577a3499209e15, type: 3}
     - target: {fileID: 1437021107093343900, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -237,6 +241,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GAEnvironment
       objectReference: {fileID: 0}
+    - target: {fileID: 3271954356818954412, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
+      propertyPath: nnet
+      value: 
+      objectReference: {fileID: 4900000, guid: 33d530c9b4b4b3577b577a3499209e15, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
 --- !u!1 &2051682244

@@ -6605,6 +6605,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1437021107093343900, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
+      propertyPath: nnet
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437021107093343900, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}

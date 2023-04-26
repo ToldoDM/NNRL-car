@@ -93,7 +93,45 @@ public class NNet : MonoBehaviour
         return output;
     }
 
-    public void Crossover(NNet p1, NNet p2, float mutationPb)
+    public void Crossover(NNet p1, NNet p2)
+    {
+        // var absFitP1P2 = Mathf.Abs(p1Fit) + Mathf.Abs(p2Fit);
+        // var p1Weight = absFitP1P2 + p1Fit;
+        // var p2Weight = absFitP1P2 + p2Fit;
+        for (int i = 0; i < _weights.Count; i++)
+        {
+            for (int x = 0; x < _weights[i].RowCount; x++)
+            {
+                for (int y = 0; y < _weights[i].ColumnCount; y++)
+                {
+                    if (Random.value > 0.5f)
+                    {
+                        _weights[i][x, y] = p1._weights[i][x, y];
+                    }
+                    else
+                    {
+                        _weights[i][x, y] = p2._weights[i][x, y];
+                    }
+                    // _weights[i][x, y] = (p1._weights[i][x, y] + p2._weights[i][x, y]) / 2;
+                    // _weights[i][x, y] = ((p1._weights[i][x, y] * p1Weight) + (p2._weights[i][x, y]) * p2Weight) /
+                    //                     (p1Weight + p2Weight);
+                }
+            }
+        }
+
+        // for (int i = 0; i < biases.Count; i++)
+        // {
+        //     // mix the bias from parent1 and parent2 with a probability of totally new bias
+        //     if (Random.value > 0.5f)
+        //         biases[i] = p1.biases[i];
+        //     else
+        //         biases[i] = p2.biases[i];
+        //     // biases[i] = (p1.biases[i] + p2.biases[i]) / 2;
+        //     // biases[i] = ((p1.biases[i] * p1Weight) + (p2.biases[i]) * p2Weight) / (p1Weight + p2Weight);
+        // }
+    }
+    
+    public void Mutate(float mutationRate)
     {
         for (int i = 0; i < _weights.Count; i++)
         {
@@ -101,20 +139,7 @@ public class NNet : MonoBehaviour
             {
                 for (int y = 0; y < _weights[i].ColumnCount; y++)
                 {
-                    // mix the weight from parent1 and parent2 with a probability of totally new weight
-                    if (Random.value > mutationPb)
-                    {
-                        if (Random.value > 0.5f)
-                        {
-                            _weights[i][x, y] = p1._weights[i][x, y];
-                        }
-                        else
-                        {
-                            _weights[i][x, y] = p2._weights[i][x, y];
-                        }
-                        // _weights[i][x, y] = (p1._weights[i][x, y] + p2._weights[i][x, y]) / 2;
-                    }
-                    else
+                    if (Random.value <= mutationRate)
                     {
                         _weights[i][x, y] = Random.Range(-1f, 1f);
                     }
@@ -124,16 +149,7 @@ public class NNet : MonoBehaviour
 
         for (int i = 0; i < biases.Count; i++)
         {
-            // mix the bias from parent1 and parent2 with a probability of totally new bias
-            if (Random.value > mutationPb)
-            {
-                if (Random.value > 0.5f)
-                    biases[i] = p1.biases[i];
-                else
-                    biases[i] =  p2.biases[i];
-                // biases[i] = (p1.biases[i] + p2.biases[i]) / 2;
-            }
-            else
+            if (Random.value <= mutationRate)
             {
                 biases[i] = Random.Range(-1f, 1f);
             }
@@ -155,6 +171,9 @@ public class NNet : MonoBehaviour
         // Create a new StreamWriter object and open the file
         using (StreamWriter writer = new StreamWriter(filePath + "NNet_Gen" + gen + "_Car" + car + ".csv"))
         {
+            writer.Write(neurons + "," + layers);
+            writer.WriteLine();
+
             // Loop through each row of the matrix
             for (var i = 0; i < _weights.Count; i++)
             {
@@ -179,6 +198,34 @@ public class NNet : MonoBehaviour
 
             // Write a new line character to separate rows
             writer.WriteLine();
+        }
+    }
+
+    public void LoadNet(string csvNnet)
+    {
+        var lines = csvNnet.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+        var neuronLayers = lines[0].Split(',');
+        var inputOutput = lines[1].Split(',');
+        Initialise(int.Parse(inputOutput[0]), int.Parse(inputOutput[1]));
+
+        for (var i = 2; i < lines.Length - 2; i++)
+        {
+            var values = lines[i].Split(',');
+            var valIndex = 0;
+            for (var x = 0; x < _weights[i - 2].RowCount; x++)
+            {
+                for (var y = 0; y < _weights[i - 2].ColumnCount; y++)
+                {
+                    _weights[i - 2][x, y] = float.Parse(values[valIndex]);
+                    valIndex++;
+                }
+            }
+        }
+
+        var fileBiases = lines[^2].Split(',');
+        for (var i = 0; i < fileBiases.Length - 1; i++)
+        {
+            biases[i] = float.Parse(fileBiases[i]);
         }
     }
 }

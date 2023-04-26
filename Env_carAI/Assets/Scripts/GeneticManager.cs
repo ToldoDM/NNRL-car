@@ -24,8 +24,8 @@ public class GeneticManager : MonoBehaviour
     private int _topPercentNumber = 0;
 
     private readonly Dictionary<int, List<float>> _currentGenStats = new Dictionary<int, List<float>>();
-    
-    
+
+
     private void Start()
     {
         // Check if the directory already exists
@@ -96,7 +96,7 @@ public class GeneticManager : MonoBehaviour
     private void RePopulate()
     {
         var topPercentList = GetTopPercent();
-        currentPopulation = topPercentList.Count;
+        currentPopulation = 0;
 
         for (int i = _topPercentNumber; i < _population.Count; i++)
         {
@@ -105,8 +105,8 @@ public class GeneticManager : MonoBehaviour
             var parent2 = Random.Range(0, _topPercentNumber);
 
             //There are some % for totally random and single node random weights
-            _population[i].network.Crossover(topPercentList[parent1].network, topPercentList[parent2].network,
-                mutationRate);
+            _population[i].network.Crossover(topPercentList[parent1].network, topPercentList[parent2].network);
+            _population[i].network.Mutate(mutationRate);
             if (Random.value > randomChild)
             {
                 _population[i].network.RandomiseWeightAndBias();
@@ -114,7 +114,6 @@ public class GeneticManager : MonoBehaviour
 
             currentPopulation++;
         }
-
         NextGeneration();
     }
 
@@ -122,7 +121,7 @@ public class GeneticManager : MonoBehaviour
     {
         currentGeneration++;
         // always same spawn point for everyone
-        var index = 1;//Random.Range(0, _population[0].spawnPoints.Count);
+        var index = 5; //Random.Range(0, _population[0].spawnPoints.Count);
         foreach (var car in _population)
         {
             car.Reset(index);
