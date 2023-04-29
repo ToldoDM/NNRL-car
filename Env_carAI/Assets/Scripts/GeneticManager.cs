@@ -46,7 +46,7 @@ public class GeneticManager : MonoBehaviour
     public void Death()
     {
         currentPopulation--;
-        if (currentPopulation == 0)
+        if (currentPopulation <= 0)
         {
             _population.Sort((x, y) => x.overallFitness.CompareTo(y.overallFitness));
             _population.Reverse();
@@ -96,7 +96,7 @@ public class GeneticManager : MonoBehaviour
     private void RePopulate()
     {
         var topPercentList = GetTopPercent();
-        currentPopulation = 0;
+        currentPopulation = topPercentList.Count;
 
         for (int i = _topPercentNumber; i < _population.Count; i++)
         {
@@ -121,7 +121,7 @@ public class GeneticManager : MonoBehaviour
     {
         currentGeneration++;
         // always same spawn point for everyone
-        var index = 5; //Random.Range(0, _population[0].spawnPoints.Count);
+        var index = 1; //Random.Range(0, _population[0].spawnPoints.Count);
         foreach (var car in _population)
         {
             car.Reset(index);

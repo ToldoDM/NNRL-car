@@ -66,7 +66,7 @@ public class CarController : MonoBehaviour
         if(nnet != null)
             network.LoadNet(nnet.text);
         _manager.AddCar(this);
-        Reset(5); //Random.Range(0, spawnPoints.Count));
+        Reset(1); //Random.Range(0, spawnPoints.Count));
     }
 
     public void Reset(int spawnPointIndex)

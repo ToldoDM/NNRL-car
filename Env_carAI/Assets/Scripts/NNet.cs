@@ -173,6 +173,8 @@ public class NNet : MonoBehaviour
         {
             writer.Write(neurons + "," + layers);
             writer.WriteLine();
+            writer.Write(_inputNum + "," + _outputNum);
+            writer.WriteLine();
 
             // Loop through each row of the matrix
             for (var i = 0; i < _weights.Count; i++)
@@ -205,6 +207,8 @@ public class NNet : MonoBehaviour
     {
         var lines = csvNnet.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
         var neuronLayers = lines[0].Split(',');
+        layers = int.Parse(neuronLayers[1]);
+        neurons = int.Parse(neuronLayers[0]);
         var inputOutput = lines[1].Split(',');
         Initialise(int.Parse(inputOutput[0]), int.Parse(inputOutput[1]));
 
