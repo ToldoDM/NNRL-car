@@ -121,7 +121,7 @@ public class GeneticManager : MonoBehaviour
     {
         currentGeneration++;
         // always same spawn point for everyone
-        var index = 1; //Random.Range(0, _population[0].spawnPoints.Count);
+        var index = 0; //Random.Range(0, _population[0].spawnPoints.Count);
         foreach (var car in _population)
         {
             car.Reset(index);
