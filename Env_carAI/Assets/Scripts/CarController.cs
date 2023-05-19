@@ -1,179 +1,272 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.MLAgents.Sensors;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(NNet))]
 public class CarController : MonoBehaviour
 {
-    private Vector3 _startPosition, _startRotation;
-    private NNet _network;
-    private const int DistanceDivision = 10;
-    private const float MaxRayDistance = 10f;
-    private float _nnAcceleration;
-    private float _nnSpeed;
+    [SerializeField] public List<Transform> spawnPoints;
+    [SerializeField] public List<Transform> checkpoints;
+    [SerializeField] public TextAsset nnet;
 
-    [Header("CurrentStats")] public float currentSpeed;
+    [Header("CurrentStats")] public bool humanControlled = false;
+    public float currentSpeed;
     public float currentAcceleration;
-    public float timeSinceStart = 0f;
-    public float overallFitness;
-    public int currentRun = 1;
-
-    [Header("Network Options")] public int layers = 1;
-    public int neurons = 10;
+    public float timeSinceLastCheckpoint = 0f;
+    public float distanceTraveledSinceCheckpoint = 0f;
+    public float distanceToNextGate = -1f;
+    public float distanceToPrevGate = -1f;
+    public float overallFitness = 0f;
 
     [Header("CarStats")] public float maxSpeed = 11.4f;
     public float acceleration = 5f;
     public float deceleration = 2f;
     public float turnSpeed = 0.02f;
 
-    [Header("Fitness")] public float distanceMultiplier = 1.4f;
-    public float avgSpeedMultiplier = 0.2f;
-    public float sensorMultiplier = 0.1f;
+    [Header("Fitness")] public float currentReward = 0f;
+    public float distanceMultiplier = 1.4f;
+    public float speedMultiplier = 0.2f;
+    public float gateMultiplier = 1f;
+    public int giveReward = 0;
+    
+    [Header("Neural Network")]
+    public int inputLayer = 12;
+    public int outputLayer = 2;
 
+    [HideInInspector] public NNet network;
+
+    private Vector3 _startPosition, _startRotation;
+    private const int DistanceDivision = 10;
+    private const float MaxRayDistance = 10f;
+    private float _nnAcceleration;
+    private float _nnSpeed;
+    private List<float> _nnInputs = new List<float>();
     private Vector3 _lastPosition;
     private float _lastSpeed = 0f;
-    private float _totalDistanceTravelled;
-    private float _totalDistanceForward;
-    private float _avgSpeed;
-    private float _aSensor;
-    private float _bSensor;
-    private float _cSensor;
-    private float _dSensor;
-
-    private float _eSensor;
-    // private List<float> _nnInputs;
+    private int _lastCheckpoint = -1;
+    private string _spawnName = "";
+    private Vector3 _nextGatePosition = Vector3.zero;
+    private Vector3 _prevGatePosition = Vector3.zero;
+    private float _prevDistanceToNextGate = 0f;
+    private RayPerceptionSensorComponent3D _raySensor;
+    private const float CheckpointTimeout = 10f;
+    private GeneticManager _manager;
+    private bool _dead = false;
 
     private void Awake()
     {
-        var transform1 = transform;
-        _startPosition = transform1.position;
-        _startRotation = transform1.eulerAngles;
-        // _nnInputs = new List<float>();
-        // _network = GetComponent<NNet>();
-        // _network.Initialise(layers, neurons, 7, 2);
+        network = gameObject.GetComponent<NNet>();
+        _manager = GameObject.FindObjectOfType<GeneticManager>();
+        _raySensor = gameObject.GetComponent<RayPerceptionSensorComponent3D>();
+        network.Initialise(inputLayer, outputLayer);
+        if(nnet != null)
+            network.LoadNet(nnet.text);
+        _manager.AddCar(this);
+        Reset(0); //Random.Range(0, spawnPoints.Count));
     }
 
-    public void Reset()
+    public void Reset(int spawnPointIndex)
     {
-        currentRun++;
-        var transform1 = transform;
         currentSpeed = 0f;
         currentAcceleration = 0f;
-        timeSinceStart = 0f;
-        _lastPosition = _startPosition;
+        _dead = false;
         _lastSpeed = 0f;
-        transform1.position = _startPosition;
-        transform1.eulerAngles = _startRotation;
-        _totalDistanceTravelled = 0f;
-        _totalDistanceForward = 0f;
-        _avgSpeed = 0f;
+        _lastCheckpoint = -1;
+        timeSinceLastCheckpoint = 0f;
+        distanceTraveledSinceCheckpoint = 0f;
+        giveReward = 0;
+        _spawnName = "";
+        distanceToNextGate = -1f;
+        distanceToPrevGate = -1f;
+        _nextGatePosition = Vector3.zero;
+        _prevGatePosition = Vector3.zero;
         overallFitness = 0f;
-        // _network.Initialise(layers, neurons, 7, 2);
+        GetRandomPosition(spawnPointIndex);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void Death()
     {
-        if (!collision.gameObject.name.Equals("Ground"))
+        currentSpeed = 0f;
+        currentAcceleration = 0f;
+        _dead = true;
+        _manager.Death();
+    }
+
+    private void GetRandomPosition(int spawnPointIndex)
+    {
+        var carObject = transform;
+        var spawnTransform = spawnPoints[spawnPointIndex]; //Random.Range(0, spawnPoints.Count)];
+        var position = spawnTransform.position;
+        var eulerAngles = spawnTransform.eulerAngles;
+        carObject.position = position;
+        carObject.eulerAngles = eulerAngles;
+        _lastPosition = position;
+        _startRotation = eulerAngles;
+        CalculateNextGate();
+    }
+
+    private void CalculateNextGate()
+    {
+        var closestGate = 0;
+        var minDistance = 10000f;
+        foreach (var cpt in checkpoints)
         {
-            Reset();
+            if (!(Vector3.Distance(transform.position, cpt.position) < minDistance)) continue;
+            minDistance = Vector3.Distance(transform.position, cpt.position);
+            closestGate = checkpoints.IndexOf(cpt);
+        }
+
+        GivePrevNextGate(closestGate);
+    }
+
+    private void GivePrevNextGate(int index)
+    {
+        _lastCheckpoint = index;
+        timeSinceLastCheckpoint = 0f;
+        distanceTraveledSinceCheckpoint = 0f;
+        _nextGatePosition = checkpoints[(_lastCheckpoint + 1) % checkpoints.Count].position;
+        _prevGatePosition = checkpoints[(_lastCheckpoint + checkpoints.Count - 1) % checkpoints.Count].position;
+        _prevDistanceToNextGate = Vector3.Distance(transform.position, _nextGatePosition);
+    }
+
+    private void HandleCheckpoint(Transform checkpoint)
+    {
+        var index = checkpoints.IndexOf(checkpoint);
+
+        if (index != (_lastCheckpoint + 1) % checkpoints.Count)
+        {
+            var exponent = 0;
+            for (var i = index; i % checkpoints.Count != _lastCheckpoint; i++)
+            {
+                exponent++;
+            }
+
+            // AddReward((float)-Math.Pow(2, exponent) + 1);
+            overallFitness += (float)-Math.Pow(2, exponent) + 1;
+        }
+        else
+        {
+            var reward = distanceTraveledSinceCheckpoint / timeSinceLastCheckpoint;
+            // AddReward(reward < 1
+            //     ? 1 * gateMultiplier
+            //     : reward * gateMultiplier);
+            overallFitness += reward < 1
+                ? 1 * gateMultiplier
+                : reward * gateMultiplier;
+            GivePrevNextGate(index);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "Spawn":
+                if (other.name == _spawnName)
+                {
+                    giveReward = 1;
+                }
+
+                break;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "checkpoints":
+                HandleCheckpoint(other.gameObject.transform);
+                break;
+            case "Spawn":
+                if (_spawnName == "")
+                {
+                    _spawnName = other.name;
+                    giveReward = 0;
+                }
+
+                break;
+            default:
+                // AddReward(-10f);
+                overallFitness += -10f;
+                Death();
+                // Reset();
+                break;
         }
     }
 
     private void FixedUpdate()
     {
-        InputSensors();
-        _lastPosition = transform.position;
+        if (_dead) return;
 
-        //Human controlled
-        var a = Input.GetAxis("Vertical");
-        var s = Input.GetAxis("Horizontal");
-        MoveCar(a, s);
+        if (humanControlled)
+        {
+            //Human controlled
+            var a = Input.GetAxis("Vertical");
+            var s = Input.GetAxis("Horizontal");
+            MoveCar(a, s);
+        }
+        else
+        {
+            //Neural network
+            ClearAndAddInputs();
+            var nnOut = network.RunNetwork(_nnInputs);
+            MoveCar(nnOut[0], nnOut[1]);
+        }
 
-        //Neural network
-        // ClearAndAddInputs();
-        // var nnOut = _network.RunNetwork(_nnInputs);
-        // MoveCar(nnOut[0], nnOut[1]);
+        currentReward = CalculateReward();
 
-        _lastSpeed = currentSpeed;
-        timeSinceStart += Time.deltaTime;
+        timeSinceLastCheckpoint += Time.deltaTime;
+        var position = transform.position;
+        distanceToNextGate = Vector3.Distance(position, _nextGatePosition);
+        distanceToPrevGate = Vector3.Distance(position, _prevGatePosition);
+        Debug.DrawLine(position, _nextGatePosition, Color.magenta);
+        Debug.DrawLine(position, _prevGatePosition, Color.blue);
+        overallFitness += ((_prevDistanceToNextGate - distanceToNextGate));
+        _prevDistanceToNextGate = distanceToNextGate;
 
-        CalculateFitness();
+        if (timeSinceLastCheckpoint <= CheckpointTimeout && overallFitness < 3000) return;
+        Death();
+        // Reset();
     }
 
-    // private void ClearAndAddInputs()
-    // {
-    //     _nnInputs.Clear();
-    //     _nnInputs.Add(_aSensor);
-    //     _nnInputs.Add(_bSensor);
-    //     _nnInputs.Add(_cSensor);
-    //     _nnInputs.Add(_dSensor);
-    //     _nnInputs.Add(_eSensor);
-    //     _nnInputs.Add(_nnAcceleration);
-    //     _nnInputs.Add(_nnSpeed);
-    // }
+    private void ClearAndAddInputs()
+    {
+        var raysOut = RayPerceptionSensor.Perceive(_raySensor.GetRayPerceptionInput()).RayOutputs;
+        // Add observations
+        _nnInputs.Clear();
+        _nnInputs.Add(raysOut[0].HitFraction);
+        _nnInputs.Add(raysOut[1].HitFraction);
+        _nnInputs.Add(raysOut[2].HitFraction);
+        _nnInputs.Add(raysOut[3].HitFraction);
+        _nnInputs.Add(raysOut[4].HitFraction);
+        _nnInputs.Add(raysOut[5].HitFraction);
+        _nnInputs.Add(raysOut[6].HitFraction);
+        _nnInputs.Add(_nnSpeed);
+        _nnInputs.Add(_nnAcceleration);
+        _nnInputs.Add(distanceTraveledSinceCheckpoint / 20f);
+        _nnInputs.Add(distanceToNextGate / 20f);
+        _nnInputs.Add(distanceToPrevGate / 30f);
+    }
 
-
-    private void CalculateFitness()
+    private float CalculateReward()
     {
         var currentDistance = Vector3.Distance(transform.position, _lastPosition);
-        _totalDistanceForward = (currentSpeed >= 0)
-            ? _totalDistanceForward + currentDistance
-            : _totalDistanceForward - currentDistance;
-        _totalDistanceTravelled += currentDistance;
-        _avgSpeed = _totalDistanceTravelled / timeSinceStart;
+        var distanceValue = (currentSpeed >= 0)
+            ? currentDistance
+            : -currentDistance;
+        distanceTraveledSinceCheckpoint += currentDistance;
 
-        overallFitness = (_totalDistanceForward * distanceMultiplier) + (_avgSpeed * avgSpeedMultiplier) +
-                         (((_aSensor + _bSensor + _cSensor + _dSensor + _eSensor) / 5) * sensorMultiplier);
-
-        if (timeSinceStart > 20 && overallFitness < 40)
-        {
-            Reset();
-        }
-
-        if (overallFitness >= 1000)
-        {
-            Reset();
-        }
-    }
-
-    private void InputSensors()
-    {
-        var transform1 = transform;
-        var forward = transform1.forward;
-        var right = transform1.right;
-        Vector3 rayTop = (forward);
-        Vector3 rayTopRight = (forward + right);
-        Vector3 rayTopLeft = (forward - right);
-        Vector3 rayRight = Quaternion.Euler(0, 90, 0) * forward;
-        Vector3 rayLeft = Quaternion.Euler(0, -90, 0) * forward;
-
-        var r = new Ray(transform1.position, rayTop);
-        _aSensor = RayCastRays(r);
-        r.direction = rayTopRight;
-        _bSensor = RayCastRays(r);
-        r.direction = rayTopLeft;
-        _cSensor = RayCastRays(r);
-        r.direction = rayRight;
-        _dSensor = RayCastRays(r);
-        r.direction = rayLeft;
-        _eSensor = RayCastRays(r);
-    }
-
-    private float RayCastRays(Ray r)
-    {
-        RaycastHit hit;
-        if (!Physics.Raycast(r, out hit, MaxRayDistance))
-        {
-            return 1;
-        }
-
-        Debug.DrawLine(r.origin, hit.point, Color.red);
-        return hit.distance / DistanceDivision;
+        return ((distanceValue * distanceMultiplier) + (currentSpeed * speedMultiplier)) / 10;
     }
 
     private void MoveCar(float inputVertical, float inputHorizontal)
     {
+        _lastPosition = transform.position;
         var isGoingInt = Convert.ToInt32(currentSpeed >= 0);
         currentSpeed = inputVertical switch
         {
@@ -186,12 +279,14 @@ public class CarController : MonoBehaviour
         _nnSpeed = currentSpeed / maxSpeed;
 
         currentAcceleration = (currentSpeed - _lastSpeed) / Time.deltaTime;
-        _nnAcceleration = currentAcceleration / acceleration * 2;
+        _nnAcceleration = currentAcceleration / (acceleration * 2);
 
         transform.Translate(Vector3.forward * (currentSpeed * Time.deltaTime));
         if (currentSpeed != 0)
         {
             transform.eulerAngles += new Vector3(0, (inputHorizontal * 90) * turnSpeed, 0);
         }
+
+        _lastSpeed = currentSpeed;
     }
 }

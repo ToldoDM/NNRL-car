@@ -1,0 +1,479 @@
+{
+    "Car": {
+        "checkpoints": [
+            {
+                "steps": 99995,
+                "file_path": "results/test4l128n-lr7/Car/Car-99995.onnx",
+                "reward": -4.245193958282471,
+                "creation_time": 1682450958.8317227,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-99995.pt"
+                ]
+            },
+            {
+                "steps": 199953,
+                "file_path": "results/test4l128n-lr7/Car/Car-199953.onnx",
+                "reward": 1.2503904819488525,
+                "creation_time": 1682451002.6716094,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-199953.pt"
+                ]
+            },
+            {
+                "steps": 299979,
+                "file_path": "results/test4l128n-lr7/Car/Car-299979.onnx",
+                "reward": -2.3598012924194336,
+                "creation_time": 1682451047.3048353,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-299979.pt"
+                ]
+            },
+            {
+                "steps": 399947,
+                "file_path": "results/test4l128n-lr7/Car/Car-399947.onnx",
+                "reward": 0.40749287605285645,
+                "creation_time": 1682451090.7449374,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-399947.pt"
+                ]
+            },
+            {
+                "steps": 499993,
+                "file_path": "results/test4l128n-lr7/Car/Car-499993.onnx",
+                "reward": -0.12816495620287383,
+                "creation_time": 1682451131.8967655,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-499993.pt"
+                ]
+            },
+            {
+                "steps": 599936,
+                "file_path": "results/test4l128n-lr7/Car/Car-599936.onnx",
+                "reward": -2.9956589738527932,
+                "creation_time": 1682451174.8647265,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-599936.pt"
+                ]
+            },
+            {
+                "steps": 699961,
+                "file_path": "results/test4l128n-lr7/Car/Car-699961.onnx",
+                "reward": 1.732869267463684,
+                "creation_time": 1682451217.659983,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-699961.pt"
+                ]
+            },
+            {
+                "steps": 799990,
+                "file_path": "results/test4l128n-lr7/Car/Car-799990.onnx",
+                "reward": null,
+                "creation_time": 1682451260.395691,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-799990.pt"
+                ]
+            },
+            {
+                "steps": 899983,
+                "file_path": "results/test4l128n-lr7/Car/Car-899983.onnx",
+                "reward": 4.2040117383003235,
+                "creation_time": 1682451301.429381,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-899983.pt"
+                ]
+            },
+            {
+                "steps": 999964,
+                "file_path": "results/test4l128n-lr7/Car/Car-999964.onnx",
+                "reward": 6.252786004543305,
+                "creation_time": 1682451343.7430313,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-999964.pt"
+                ]
+            },
+            {
+                "steps": 1099978,
+                "file_path": "results/test4l128n-lr7/Car/Car-1099978.onnx",
+                "reward": -1.1367380619049072,
+                "creation_time": 1682451386.0009208,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-1099978.pt"
+                ]
+            },
+            {
+                "steps": 1199945,
+                "file_path": "results/test4l128n-lr7/Car/Car-1199945.onnx",
+                "reward": 4.7267110007149835,
+                "creation_time": 1682451427.233994,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-1199945.pt"
+                ]
+            },
+            {
+                "steps": 1299990,
+                "file_path": "results/test4l128n-lr7/Car/Car-1299990.onnx",
+                "reward": 72.44412891431288,
+                "creation_time": 1682451470.1479838,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-1299990.pt"
+                ]
+            },
+            {
+                "steps": 1399981,
+                "file_path": "results/test4l128n-lr7/Car/Car-1399981.onnx",
+                "reward": 26.267207264900208,
+                "creation_time": 1682451514.4347007,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-1399981.pt"
+                ]
+            },
+            {
+                "steps": 1499954,
+                "file_path": "results/test4l128n-lr7/Car/Car-1499954.onnx",
+                "reward": 56.97151986956597,
+                "creation_time": 1682451558.5424678,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-1499954.pt"
+                ]
+            },
+            {
+                "steps": 1599957,
+                "file_path": "results/test4l128n-lr7/Car/Car-1599957.onnx",
+                "reward": 71.7836030179804,
+                "creation_time": 1682451603.8553534,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-1599957.pt"
+                ]
+            },
+            {
+                "steps": 1699954,
+                "file_path": "results/test4l128n-lr7/Car/Car-1699954.onnx",
+                "reward": 56.542087614536285,
+                "creation_time": 1682451649.6592717,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-1699954.pt"
+                ]
+            },
+            {
+                "steps": 1799976,
+                "file_path": "results/test4l128n-lr7/Car/Car-1799976.onnx",
+                "reward": 81.83945059776306,
+                "creation_time": 1682451696.201302,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-1799976.pt"
+                ]
+            },
+            {
+                "steps": 1899958,
+                "file_path": "results/test4l128n-lr7/Car/Car-1899958.onnx",
+                "reward": 53.62355883419514,
+                "creation_time": 1682451737.6282403,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-1899958.pt"
+                ]
+            },
+            {
+                "steps": 1999951,
+                "file_path": "results/test4l128n-lr7/Car/Car-1999951.onnx",
+                "reward": 94.32949319907597,
+                "creation_time": 1682451780.3009849,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-1999951.pt"
+                ]
+            },
+            {
+                "steps": 2099942,
+                "file_path": "results/test4l128n-lr7/Car/Car-2099942.onnx",
+                "reward": 52.19074523448944,
+                "creation_time": 1682451823.2139907,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-2099942.pt"
+                ]
+            },
+            {
+                "steps": 2199955,
+                "file_path": "results/test4l128n-lr7/Car/Car-2199955.onnx",
+                "reward": null,
+                "creation_time": 1682451865.9902344,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-2199955.pt"
+                ]
+            },
+            {
+                "steps": 2299950,
+                "file_path": "results/test4l128n-lr7/Car/Car-2299950.onnx",
+                "reward": 342.7594365596771,
+                "creation_time": 1682451906.6424668,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-2299950.pt"
+                ]
+            },
+            {
+                "steps": 2399959,
+                "file_path": "results/test4l128n-lr7/Car/Car-2399959.onnx",
+                "reward": 312.2045076608658,
+                "creation_time": 1682451950.0134532,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-2399959.pt"
+                ]
+            },
+            {
+                "steps": 2499999,
+                "file_path": "results/test4l128n-lr7/Car/Car-2499999.onnx",
+                "reward": null,
+                "creation_time": 1682451993.157184,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-2499999.pt"
+                ]
+            },
+            {
+                "steps": 2599957,
+                "file_path": "results/test4l128n-lr7/Car/Car-2599957.onnx",
+                "reward": 526.6107025146484,
+                "creation_time": 1682452036.027187,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-2599957.pt"
+                ]
+            },
+            {
+                "steps": 2699963,
+                "file_path": "results/test4l128n-lr7/Car/Car-2699963.onnx",
+                "reward": 101.97871049245198,
+                "creation_time": 1682452080.7805998,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-2699963.pt"
+                ]
+            },
+            {
+                "steps": 2799947,
+                "file_path": "results/test4l128n-lr7/Car/Car-2799947.onnx",
+                "reward": 205.24159169197083,
+                "creation_time": 1682452140.5261753,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-2799947.pt"
+                ]
+            },
+            {
+                "steps": 2899948,
+                "file_path": "results/test4l128n-lr7/Car/Car-2899948.onnx",
+                "reward": null,
+                "creation_time": 1682452235.9265025,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-2899948.pt"
+                ]
+            },
+            {
+                "steps": 2999987,
+                "file_path": "results/test4l128n-lr7/Car/Car-2999987.onnx",
+                "reward": 563.7691232860088,
+                "creation_time": 1682452335.546816,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-2999987.pt"
+                ]
+            },
+            {
+                "steps": 3099966,
+                "file_path": "results/test4l128n-lr7/Car/Car-3099966.onnx",
+                "reward": 267.78068685531616,
+                "creation_time": 1682452436.1940584,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-3099966.pt"
+                ]
+            },
+            {
+                "steps": 3199999,
+                "file_path": "results/test4l128n-lr7/Car/Car-3199999.onnx",
+                "reward": null,
+                "creation_time": 1682452537.9980273,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-3199999.pt"
+                ]
+            },
+            {
+                "steps": 3299936,
+                "file_path": "results/test4l128n-lr7/Car/Car-3299936.onnx",
+                "reward": 706.3832793533802,
+                "creation_time": 1682452637.6837692,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-3299936.pt"
+                ]
+            },
+            {
+                "steps": 3399994,
+                "file_path": "results/test4l128n-lr7/Car/Car-3399994.onnx",
+                "reward": 104.37323718070984,
+                "creation_time": 1682452738.086275,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-3399994.pt"
+                ]
+            },
+            {
+                "steps": 3499963,
+                "file_path": "results/test4l128n-lr7/Car/Car-3499963.onnx",
+                "reward": 434.6042604446411,
+                "creation_time": 1682452837.4902961,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-3499963.pt"
+                ]
+            },
+            {
+                "steps": 3599979,
+                "file_path": "results/test4l128n-lr7/Car/Car-3599979.onnx",
+                "reward": null,
+                "creation_time": 1682452936.266759,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-3599979.pt"
+                ]
+            },
+            {
+                "steps": 3699964,
+                "file_path": "results/test4l128n-lr7/Car/Car-3699964.onnx",
+                "reward": 53.17762003495143,
+                "creation_time": 1682453357.713519,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-3699964.pt"
+                ]
+            },
+            {
+                "steps": 3799976,
+                "file_path": "results/test4l128n-lr7/Car/Car-3799976.onnx",
+                "reward": 44.33943673542568,
+                "creation_time": 1682453430.5014296,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-3799976.pt"
+                ]
+            },
+            {
+                "steps": 3899992,
+                "file_path": "results/test4l128n-lr7/Car/Car-3899992.onnx",
+                "reward": 392.3504730463028,
+                "creation_time": 1682453498.1561713,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-3899992.pt"
+                ]
+            },
+            {
+                "steps": 3999977,
+                "file_path": "results/test4l128n-lr7/Car/Car-3999977.onnx",
+                "reward": 163.13223285675048,
+                "creation_time": 1682453563.3303711,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-3999977.pt"
+                ]
+            },
+            {
+                "steps": 4099986,
+                "file_path": "results/test4l128n-lr7/Car/Car-4099986.onnx",
+                "reward": 378.74189245700836,
+                "creation_time": 1682453631.0788178,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-4099986.pt"
+                ]
+            },
+            {
+                "steps": 4199977,
+                "file_path": "results/test4l128n-lr7/Car/Car-4199977.onnx",
+                "reward": 2113.691810131073,
+                "creation_time": 1682453699.7883794,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-4199977.pt"
+                ]
+            },
+            {
+                "steps": 4299976,
+                "file_path": "results/test4l128n-lr7/Car/Car-4299976.onnx",
+                "reward": null,
+                "creation_time": 1682453767.1433136,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-4299976.pt"
+                ]
+            },
+            {
+                "steps": 4399981,
+                "file_path": "results/test4l128n-lr7/Car/Car-4399981.onnx",
+                "reward": null,
+                "creation_time": 1682453832.9843395,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-4399981.pt"
+                ]
+            },
+            {
+                "steps": 4499990,
+                "file_path": "results/test4l128n-lr7/Car/Car-4499990.onnx",
+                "reward": 6.811188658078511,
+                "creation_time": 1682453900.3388402,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-4499990.pt"
+                ]
+            },
+            {
+                "steps": 4599994,
+                "file_path": "results/test4l128n-lr7/Car/Car-4599994.onnx",
+                "reward": null,
+                "creation_time": 1682453968.5635843,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-4599994.pt"
+                ]
+            },
+            {
+                "steps": 4699950,
+                "file_path": "results/test4l128n-lr7/Car/Car-4699950.onnx",
+                "reward": 1.860237717628479,
+                "creation_time": 1682454035.8013535,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-4699950.pt"
+                ]
+            },
+            {
+                "steps": 4799946,
+                "file_path": "results/test4l128n-lr7/Car/Car-4799946.onnx",
+                "reward": null,
+                "creation_time": 1682454103.6020691,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-4799946.pt"
+                ]
+            },
+            {
+                "steps": 4899958,
+                "file_path": "results/test4l128n-lr7/Car/Car-4899958.onnx",
+                "reward": null,
+                "creation_time": 1682454172.2506459,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-4899958.pt"
+                ]
+            },
+            {
+                "steps": 4999937,
+                "file_path": "results/test4l128n-lr7/Car/Car-4999937.onnx",
+                "reward": null,
+                "creation_time": 1682454238.1306338,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-4999937.pt"
+                ]
+            },
+            {
+                "steps": 5000001,
+                "file_path": "results/test4l128n-lr7/Car/Car-5000001.onnx",
+                "reward": null,
+                "creation_time": 1682454238.1935158,
+                "auxillary_file_paths": [
+                    "results/test4l128n-lr7/Car/Car-5000001.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000001,
+            "file_path": "results/test4l128n-lr7/Car.onnx",
+            "reward": null,
+            "creation_time": 1682454238.1935158,
+            "auxillary_file_paths": [
+                "results/test4l128n-lr7/Car/Car-5000001.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0+cu113"
+    }
+}
