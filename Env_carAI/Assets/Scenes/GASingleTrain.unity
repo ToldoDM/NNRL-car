@@ -184,7 +184,7 @@ PrefabInstance:
     - target: {fileID: 1437021107093343900, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
       propertyPath: nnet
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4900000, guid: 33d530c9b4b4b3577b577a3499209e15, type: 3}
     - target: {fileID: 1437021107093343900, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
       propertyPath: m_Enabled
       value: 1
