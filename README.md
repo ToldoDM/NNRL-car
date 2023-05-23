@@ -18,7 +18,7 @@ Also, for training with DeepRL, we have used the Unity [ml-agents library](https
 **----> Read the important notes at the end <----**
 ## DeepRL
 To train our agent with the DeepRL algorithm, we have used the PPO algorithm that is already implemented into the ml-agents library. 
-You can set you hyperparameters, but the one we used is as follows:
+You can set your hyperparameters, but the one we used is as follows:
 ```
 behaviors:
   Car:
