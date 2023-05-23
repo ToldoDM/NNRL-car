@@ -11,6 +11,8 @@ Since in our scripts we are using the Machine Learning objects, is needed to hav
 
 Also, for training with DeepRL, we have used the Unity [ml-agents library](https://github.com/Unity-Technologies/ml-agents).
 
+The Unity project is the folder `Env_carAI`.
+
 
 # How to train
 **----> Read the important notes at the end <----**
