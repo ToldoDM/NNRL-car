@@ -54,7 +54,7 @@ The parameters `keep_checkpoints` and `checkpoint_interval` determine the freque
 On the other hand, `summary_freq` determines the frequency at which you want to print the summary information on the command line interface (cmd). It denotes how often you wish to see updates and relevant information during the training process.
 
 ### Start the training
-In order to strart the training there are 2 steps to do.
+In order to strart the training there are some steps to follow.
 
 - Select the environment. In this case you can select whatever scene start with the acronym `RL`.
 ![load scene](images/load_scene.gif "load scene")
