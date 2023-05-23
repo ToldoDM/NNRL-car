@@ -1,5 +1,5 @@
 # NNRL-car
-This project is a project regarding a self driving car. We wanted to experiment with 3D enviroment and work with something we are passionate about.
+This work is a project regarding a self driving car. We wanted to experiment with 3D enviroment and work with something we are passionate about.
 
 This is our first hands on AI algorithms, we have played aroud with Generic Algorithm and DeepRL algorithm.
 
@@ -48,9 +48,10 @@ behaviors:
 ```
 If you want to modify the network dimension, you can modify the `hidden_units` and `num_layers`.
 
-The values `keep_checkpoints` and `checkpoint_interval` are regarding how often save the Neural Network that was trained and how many checkpoint to keep at maximum. So in this case it will save the Neural Net evey 100000 steps and keep at maximum 100 Neural Network, always keeping the 100 most recent ones.
+The parameters `keep_checkpoints` and `checkpoint_interval` determine the frequency and maximum number of saved Neural Network checkpoints. In this scenario, the Neural Network will be saved every 100.000 steps, and a maximum of 100 checkpoints will be retained, always preserving the 100 most recent ones.
 
-`max_steps` and `summary_freq` respectively how many steps do you wanto the training to last and how often do you want the summary printed on the cmd.
+`max_steps` specifies the desired duration of the training in terms of the number of steps. It indicates how many steps you want the training process to proceed before stopping.
+On the other hand, `summary_freq` determines the frequency at which you want to print the summary information on the command line interface (cmd). It denotes how often you wish to see updates and relevant information during the training process.
 
 ### Start the training
 In order to strart the training there are 2 steps to do.
@@ -61,7 +62,7 @@ In order to strart the training there are 2 steps to do.
 ![jeep properties](images/nn_properties.jpg "jeep properties")
 - Start the training using the python library command `mlagents−learn path/to/config.yaml −−run−id−name`
 ![start trainer](images/run_ml_train.gif "start trainer")
-- Press the play button on the Unity editor, as this will start the training. The trainin will automatically stop when the number of steps will reache the one indicated in the config `max_steps`.
+- Press the play button on the Unity editor, as this will start the training. The trainin will automatically stop when the number of steps will reach the one indicated in the config `max_steps`.
 
 ## Genetic Algorithm
 Here to start the training is a little simplier. Here the steps:
@@ -77,5 +78,5 @@ Here to start the training is a little simplier. Here the steps:
 - Press the play button on the Unity editor, as this will start the training. The training doesn't stop automatically, to stop it is just needed to press the stop button of the editor.
 
 # Important notes
-Since multiple scene have multiple agents, modifying one by one would take a long time. Is more reasonable if you modify directly the prefab, since that is the reference of every copy in the scene.
+Since multiple scenes have multiple agents, modifying one by one would take a long time. It is more reasonable if you modify directly the prefab, since that is the reference of every copy in the scene.
 You can recognize the prefab for DeepRL and Genetic algorithm as they have the acronym `GA` and `RL`.
