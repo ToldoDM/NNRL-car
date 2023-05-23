@@ -62,10 +62,10 @@ In order to strart the training there are some steps to follow.
 ![jeep properties](images/nn_properties.jpg "jeep properties")
 - Start the training using the python library command `mlagents−learn path/to/config.yaml −−run−id−name`
 ![start trainer](images/run_ml_train.gif "start trainer")
-- Press the play button on the Unity editor, as this will start the training. The trainin will automatically stop when the number of steps will reach the one indicated in the config `max_steps`.
+- Press the play button on the Unity editor, as this will start the training. The training will automatically stop when the number of steps will reach the one indicated in the config `max_steps`.
 
 ## Genetic Algorithm
-Here to start the training is a little simplier. Here the steps:
+Here to start the training is a little simplier. Here are the steps:
 
 - Select the environment. In this case you can select whatever scene start with the acronym `GA`.
 ![load scene](images/load_scene_ga.gif "load scene")
@@ -73,7 +73,7 @@ Here to start the training is a little simplier. Here the steps:
 ![jeep properties](images/ga_properties.jpg "jeep properties")
 - Modify the structure of the Neural Network, if needed.<br>
 ![NNet](images/ga_nnet.png "NNet")
-- Customize the values of the manager. To do so select the `_manager` game object and modify its properties. The property `N Net saving interval` correspond to the frequency of saving the Neural Net after that amount of generations. Here `best agent selection` correspond to the precentage of best performing agents selection. These agents will be kept also for the next generation and will be used to breed the next generation selecting two random parents from the pool.
+- To customize the manager, you can modify the properties of the `_manager` game object. The property called `N Net saving interval` controls how often the Neural Net is saved, based on the number of generations. The `best agent selection` property determines the percentage of top-performing agents that will be selected. These selected agents are kept for the next generation and used for breeding by randomly selecting two parents from the pool.
 ![Genetic manager](images/manager.png "Genetic manager")
 - Press the play button on the Unity editor, as this will start the training. The training doesn't stop automatically, to stop it is just needed to press the stop button of the editor.
 
