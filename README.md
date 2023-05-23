@@ -3,6 +3,8 @@ This project is a project regarding a self driving car. We wanted to experiment 
 
 This is our first hands on AI algorithms, we have played aroud with Generic Algorithm and DeepRL algorithm.
 
+The Unity project is the folder `Env_carAI`.
+
 # Prerequisites
 This project was develop with the Unity version `2021.3.20f1`. 
 
@@ -10,8 +12,6 @@ Since in our scripts we are using the Machine Learning objects, is needed to hav
 ![How to access packet manager](images/packet_mamager.gif "How to access packet manager")
 
 Also, for training with DeepRL, we have used the Unity [ml-agents library](https://github.com/Unity-Technologies/ml-agents).
-
-The Unity project is the folder `Env_carAI`.
 
 
 # How to train
