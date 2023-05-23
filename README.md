@@ -73,7 +73,7 @@ Here to start the training is a little simplier. Here are the steps:
 ![jeep properties](images/ga_properties.jpg "jeep properties")
 - Modify the structure of the Neural Network, if needed.<br>
 ![NNet](images/ga_nnet.png "NNet")
-- To customize the manager, you can modify the properties of the `_manager` game object. The property called `N Net saving interval` controls how often the Neural Net is saved, based on the number of generations. The `best agent selection` property determines the percentage of top-performing agents that will be selected. These selected agents are kept for the next generation and used for breeding by randomly selecting two parents from the pool.
+- To customize the manager, you can modify the properties of the `_manager` game object. The property called `N Net saving interval` controls how often the Neural Net is saved, based on the number of generations. The `best agent selection` property determines the percentage of top-performing agents that will be selected. These selected agents are kept for the next generation and used for breeding by randomly selecting two parents from the pool.<br>
 ![Genetic manager](images/manager.png "Genetic manager")
 - Press the play button on the Unity editor, as this will start the training. The training doesn't stop automatically, to stop it is just needed to press the stop button of the editor.
 
