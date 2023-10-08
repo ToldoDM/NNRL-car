@@ -32,10 +32,11 @@ public class CarAgent : Agent
     [Header("Fitness")] public float currentReward = 0f;
     public float distanceMultiplier = 1.4f;
     public float speedMultiplier = 0.2f;
-    public float gateMultiplier = 1f;
+    public float gateMultiplier = 0f;
     public int giveReward = 0;
 
     private Vector3 _lastPosition;
+    private int _isGoingInt;
     private float _lastSpeed = 0f;
     private int _lastCheckpoint = -1;
     private string _spawnName = "";
@@ -108,6 +109,7 @@ public class CarAgent : Agent
         _nextGatePosition = Vector3.zero;
         _prevGatePosition = Vector3.zero;
         overallFitness = 0f;
+        _isGoingInt = Convert.ToInt32(currentSpeed >= 0);;
         GetRandomPosition();
     }
 
@@ -158,8 +160,10 @@ public class CarAgent : Agent
         distanceToPrevGate = Vector3.Distance(position, _prevGatePosition);
         Debug.DrawLine(position, _nextGatePosition, Color.magenta);
         Debug.DrawLine(position, _prevGatePosition, Color.blue);
-        AddReward((_prevDistanceToNextGate - distanceToNextGate));
-        overallFitness += ((_prevDistanceToNextGate - distanceToNextGate));
+        var distance = _prevDistanceToNextGate - distanceToNextGate;
+        var currReward = (currentSpeed * distance) * _isGoingInt;
+        AddReward(currReward);
+        overallFitness += (currReward);
         _prevDistanceToNextGate = distanceToNextGate;
 
         if (timeSinceLastCheckpoint <= 10f) return;
@@ -179,8 +183,8 @@ public class CarAgent : Agent
                 exponent++;
             }
 
-            AddReward((float)-Math.Pow(2, exponent) + 1);
-            overallFitness += (float)-Math.Pow(2, exponent) + 1;
+            AddReward((float)(-Math.Pow(2, exponent) + 1) * gateMultiplier);
+            overallFitness += (float)(-Math.Pow(2, exponent) + 1) * gateMultiplier;
         }
         else
         {
@@ -198,13 +202,13 @@ public class CarAgent : Agent
     private void MoveCar(float inputVertical, float inputHorizontal)
     {
         _lastPosition = transform.position;
-        var isGoingInt = Convert.ToInt32(currentSpeed >= 0);
+        _isGoingInt = Convert.ToInt32(currentSpeed >= 0);
         currentSpeed = inputVertical switch
         {
             > 0 => Mathf.MoveTowards(currentSpeed, maxSpeed,
-                acceleration * (2 - isGoingInt) * Time.deltaTime),
+                acceleration * (2 - _isGoingInt) * Time.deltaTime),
             < 0 => Mathf.MoveTowards(currentSpeed, -maxSpeed / 2,
-                acceleration * (isGoingInt + 1) * Time.deltaTime),
+                acceleration * (_isGoingInt + 1) * Time.deltaTime),
             _ => Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.deltaTime)
         };
 

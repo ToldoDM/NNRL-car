@@ -123,6 +123,16 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &503725282 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 230422703555542780, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
+  m_PrefabInstance: {fileID: 1752396557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &911055294 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7451875231164573840, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
+  m_PrefabInstance: {fileID: 1752396557}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1517417410
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +203,14 @@ PrefabInstance:
       propertyPath: humanControlled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1437021107093343900, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
+      propertyPath: spawnPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 503725282}
+    - target: {fileID: 1437021107093343900, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
+      propertyPath: spawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 911055294}
     - target: {fileID: 2396051676525857846, guid: dd6dd6d1f446ec616af84a8204dfaeb2, type: 3}
       propertyPath: m_RootOrder
       value: 3
