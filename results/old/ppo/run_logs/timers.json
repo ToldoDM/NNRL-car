@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1682434046",
+        "python_version": "3.10.6 (main, Mar 10 2023, 10:55:28) [GCC 11.3.0]",
+        "command_line_arguments": "/home/toldo/Desktop/ULB/AI/NNRL-car/venv/bin/mlagents-learn",
+        "mlagents_version": "0.30.0",
+        "mlagents_envs_version": "0.30.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.11.0+cu113",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1682434047"
+    },
+    "total": 1.0709231679993536,
+    "count": 1,
+    "self": 0.0021147459992789663,
+    "children": {
+        "run_training.setup": {
+            "total": 0.008214726000005612,
+            "count": 1,
+            "self": 0.008214726000005612
+        },
+        "TrainerController.start_learning": {
+            "total": 1.060593696000069,
+            "count": 1,
+            "self": 0.00021858999934920575,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 1.0603663000001688,
+                    "count": 1,
+                    "self": 1.0603663000001688
+                },
+                "trainer_threads": {
+                    "total": 8.910001270123757e-07,
+                    "count": 1,
+                    "self": 8.910001270123757e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 7.915000423963647e-06,
+                    "count": 1,
+                    "self": 7.915000423963647e-06
+                }
+            }
+        }
+    }
+}
