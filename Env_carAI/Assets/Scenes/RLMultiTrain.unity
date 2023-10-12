@@ -2953,7 +2953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2396051677423697054, guid: ab0d819a41324ec5abfb3aea32f90677, type: 3}
       propertyPath: gateMultiplier
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2396051677423697054, guid: ab0d819a41324ec5abfb3aea32f90677, type: 3}
       propertyPath: distanceMultiplier

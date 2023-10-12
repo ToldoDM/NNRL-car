@@ -3082,8 +3082,8 @@ MonoBehaviour:
   turnSpeed: 0.02
   currentReward: 0
   distanceMultiplier: 1.4
-  speedMultiplier: 0.2
-  gateMultiplier: 1
+  speedMultiplier: 0.02
+  gateMultiplier: 0
   giveReward: 0
 --- !u!114 &2396051677423697055
 MonoBehaviour:

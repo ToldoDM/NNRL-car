@@ -31,7 +31,7 @@ public class CarAgent : Agent
 
     [Header("Fitness")] public float currentReward = 0f;
     public float distanceMultiplier = 1.4f;
-    public float speedMultiplier = 0.2f;
+    public float speedMultiplier = 0.02f;
     public float gateMultiplier = 0f;
     public int giveReward = 0;
 
