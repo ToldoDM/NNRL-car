@@ -2,6 +2,11 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=rider
 
 venv/
+Env_carAI/Assets/ML-Agents/**
+Env_carAI/GA_training/**
+Env_carAI/ProjectSettings/**
+game/
+.idea/
 
 ### Rider ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider

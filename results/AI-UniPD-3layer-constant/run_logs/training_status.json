@@ -1,0 +1,479 @@
+{
+    "Car": {
+        "checkpoints": [
+            {
+                "steps": 99946,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-99946.onnx",
+                "reward": 0.17837853450328112,
+                "creation_time": 1697044384.6529927,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-99946.pt"
+                ]
+            },
+            {
+                "steps": 199947,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-199947.onnx",
+                "reward": -0.031805033601510026,
+                "creation_time": 1697044469.6798193,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-199947.pt"
+                ]
+            },
+            {
+                "steps": 299959,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-299959.onnx",
+                "reward": 0.5501335602602921,
+                "creation_time": 1697044557.0114021,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-299959.pt"
+                ]
+            },
+            {
+                "steps": 399978,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-399978.onnx",
+                "reward": -0.798409091308713,
+                "creation_time": 1697044642.2695854,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-399978.pt"
+                ]
+            },
+            {
+                "steps": 499938,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-499938.onnx",
+                "reward": 5.507849069592112,
+                "creation_time": 1697044722.7210984,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-499938.pt"
+                ]
+            },
+            {
+                "steps": 599936,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-599936.onnx",
+                "reward": 9.845368180915507,
+                "creation_time": 1697044807.8404706,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-599936.pt"
+                ]
+            },
+            {
+                "steps": 699943,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-699943.onnx",
+                "reward": 60.46598267058531,
+                "creation_time": 1697044893.1067915,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-699943.pt"
+                ]
+            },
+            {
+                "steps": 799958,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-799958.onnx",
+                "reward": 91.56934091387997,
+                "creation_time": 1697044973.7232277,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-799958.pt"
+                ]
+            },
+            {
+                "steps": 899992,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-899992.onnx",
+                "reward": 62.675100000074295,
+                "creation_time": 1697045058.1342819,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-899992.pt"
+                ]
+            },
+            {
+                "steps": 999988,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-999988.onnx",
+                "reward": 26.335798342640583,
+                "creation_time": 1697045142.3166585,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-999988.pt"
+                ]
+            },
+            {
+                "steps": 1099946,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-1099946.onnx",
+                "reward": 53.23721992969513,
+                "creation_time": 1697045227.1478562,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-1099946.pt"
+                ]
+            },
+            {
+                "steps": 1199998,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-1199998.onnx",
+                "reward": 98.64471537372252,
+                "creation_time": 1697045307.460283,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-1199998.pt"
+                ]
+            },
+            {
+                "steps": 1299983,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-1299983.onnx",
+                "reward": 198.20861078966482,
+                "creation_time": 1697045392.5546896,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-1299983.pt"
+                ]
+            },
+            {
+                "steps": 1399956,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-1399956.onnx",
+                "reward": 98.90323956972618,
+                "creation_time": 1697045479.0629845,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-1399956.pt"
+                ]
+            },
+            {
+                "steps": 1499985,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-1499985.onnx",
+                "reward": 117.36710266918956,
+                "creation_time": 1697045559.8890924,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-1499985.pt"
+                ]
+            },
+            {
+                "steps": 1599976,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-1599976.onnx",
+                "reward": 56.68339805201076,
+                "creation_time": 1697045645.3563373,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-1599976.pt"
+                ]
+            },
+            {
+                "steps": 1699948,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-1699948.onnx",
+                "reward": 253.93672631330264,
+                "creation_time": 1697045730.892551,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-1699948.pt"
+                ]
+            },
+            {
+                "steps": 1799939,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-1799939.onnx",
+                "reward": 214.29655483493335,
+                "creation_time": 1697045811.679772,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-1799939.pt"
+                ]
+            },
+            {
+                "steps": 1899939,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-1899939.onnx",
+                "reward": 165.38101195445722,
+                "creation_time": 1697045897.8756578,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-1899939.pt"
+                ]
+            },
+            {
+                "steps": 1999946,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-1999946.onnx",
+                "reward": 120.67970885825223,
+                "creation_time": 1697045984.15703,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-1999946.pt"
+                ]
+            },
+            {
+                "steps": 2099952,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-2099952.onnx",
+                "reward": 236.5209501174589,
+                "creation_time": 1697046069.8134315,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-2099952.pt"
+                ]
+            },
+            {
+                "steps": 2199991,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-2199991.onnx",
+                "reward": 324.3095327074334,
+                "creation_time": 1697046150.5012872,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-2199991.pt"
+                ]
+            },
+            {
+                "steps": 2299946,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-2299946.onnx",
+                "reward": 283.24985683727675,
+                "creation_time": 1697046236.8947942,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-2299946.pt"
+                ]
+            },
+            {
+                "steps": 2399983,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-2399983.onnx",
+                "reward": 103.14800140603741,
+                "creation_time": 1697046322.7137587,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-2399983.pt"
+                ]
+            },
+            {
+                "steps": 2499964,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-2499964.onnx",
+                "reward": 160.69819578394808,
+                "creation_time": 1697046404.2508163,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-2499964.pt"
+                ]
+            },
+            {
+                "steps": 2599986,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-2599986.onnx",
+                "reward": 87.1774528175747,
+                "creation_time": 1697046490.615754,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-2599986.pt"
+                ]
+            },
+            {
+                "steps": 2699956,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-2699956.onnx",
+                "reward": 170.05235228341772,
+                "creation_time": 1697046576.4232516,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-2699956.pt"
+                ]
+            },
+            {
+                "steps": 2799960,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-2799960.onnx",
+                "reward": 259.8639626058284,
+                "creation_time": 1697046661.6913445,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-2799960.pt"
+                ]
+            },
+            {
+                "steps": 2899971,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-2899971.onnx",
+                "reward": 212.88072836781308,
+                "creation_time": 1697046742.485918,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-2899971.pt"
+                ]
+            },
+            {
+                "steps": 2999948,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-2999948.onnx",
+                "reward": 503.84411259232246,
+                "creation_time": 1697046827.6595569,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-2999948.pt"
+                ]
+            },
+            {
+                "steps": 3099953,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-3099953.onnx",
+                "reward": 206.54039555438794,
+                "creation_time": 1697046913.3066175,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-3099953.pt"
+                ]
+            },
+            {
+                "steps": 3199964,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-3199964.onnx",
+                "reward": 359.98933829324426,
+                "creation_time": 1697046994.4766963,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-3199964.pt"
+                ]
+            },
+            {
+                "steps": 3299993,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-3299993.onnx",
+                "reward": 211.94466600585656,
+                "creation_time": 1697047079.550724,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-3299993.pt"
+                ]
+            },
+            {
+                "steps": 3399980,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-3399980.onnx",
+                "reward": 437.48893550299334,
+                "creation_time": 1697047164.5846055,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-3399980.pt"
+                ]
+            },
+            {
+                "steps": 3499990,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-3499990.onnx",
+                "reward": 27.154176712036133,
+                "creation_time": 1697047249.0342839,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-3499990.pt"
+                ]
+            },
+            {
+                "steps": 3599987,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-3599987.onnx",
+                "reward": 521.7074018625353,
+                "creation_time": 1697047329.2349095,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-3599987.pt"
+                ]
+            },
+            {
+                "steps": 3699939,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-3699939.onnx",
+                "reward": 549.2911381644766,
+                "creation_time": 1697047413.410918,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-3699939.pt"
+                ]
+            },
+            {
+                "steps": 3799937,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-3799937.onnx",
+                "reward": 707.0757963955402,
+                "creation_time": 1697047498.149574,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-3799937.pt"
+                ]
+            },
+            {
+                "steps": 3899998,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-3899998.onnx",
+                "reward": 158.49109800831084,
+                "creation_time": 1697047578.2730134,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-3899998.pt"
+                ]
+            },
+            {
+                "steps": 3999980,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-3999980.onnx",
+                "reward": 303.91595978867554,
+                "creation_time": 1697047662.3392537,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-3999980.pt"
+                ]
+            },
+            {
+                "steps": 4099971,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-4099971.onnx",
+                "reward": 473.2095385128632,
+                "creation_time": 1697047746.4235659,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-4099971.pt"
+                ]
+            },
+            {
+                "steps": 4199993,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-4199993.onnx",
+                "reward": 395.48595541657414,
+                "creation_time": 1697047831.7677522,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-4199993.pt"
+                ]
+            },
+            {
+                "steps": 4299991,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-4299991.onnx",
+                "reward": 181.04449186173508,
+                "creation_time": 1697047911.722896,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-4299991.pt"
+                ]
+            },
+            {
+                "steps": 4399936,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-4399936.onnx",
+                "reward": 408.35849449923415,
+                "creation_time": 1697047996.0628178,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-4399936.pt"
+                ]
+            },
+            {
+                "steps": 4499992,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-4499992.onnx",
+                "reward": 191.8080656528473,
+                "creation_time": 1697048080.7373085,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-4499992.pt"
+                ]
+            },
+            {
+                "steps": 4599967,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-4599967.onnx",
+                "reward": 374.4699680695291,
+                "creation_time": 1697048161.1061318,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-4599967.pt"
+                ]
+            },
+            {
+                "steps": 4699987,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-4699987.onnx",
+                "reward": 183.39823499382166,
+                "creation_time": 1697048245.719805,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-4699987.pt"
+                ]
+            },
+            {
+                "steps": 4799959,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-4799959.onnx",
+                "reward": -13.861046540866871,
+                "creation_time": 1697048330.011901,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-4799959.pt"
+                ]
+            },
+            {
+                "steps": 4899953,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-4899953.onnx",
+                "reward": null,
+                "creation_time": 1697048414.526201,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-4899953.pt"
+                ]
+            },
+            {
+                "steps": 4999969,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-4999969.onnx",
+                "reward": 142.6834937802314,
+                "creation_time": 1697048494.5765681,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-4999969.pt"
+                ]
+            },
+            {
+                "steps": 5000161,
+                "file_path": "results/AI-UniPD-3layer-constant/Car/Car-5000161.onnx",
+                "reward": 142.6834937802314,
+                "creation_time": 1697048494.7054908,
+                "auxillary_file_paths": [
+                    "results/AI-UniPD-3layer-constant/Car/Car-5000161.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000161,
+            "file_path": "results/AI-UniPD-3layer-constant/Car.onnx",
+            "reward": 142.6834937802314,
+            "creation_time": 1697048494.7054908,
+            "auxillary_file_paths": [
+                "results/AI-UniPD-3layer-constant/Car/Car-5000161.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0+cu102"
+    }
+}
