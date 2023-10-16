@@ -7,6 +7,7 @@ Env_carAI/GA_training/**
 Env_carAI/ProjectSettings/**
 game/
 .idea/
+nnlocal_*
 
 ### Rider ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
