@@ -15,7 +15,9 @@ Also, for training with DeepRL, we have used the Unity [ml-agents library](https
 
 
 # How to train
-**----> Read the important notes at the end <----**
+# Important notes
+Since multiple scenes have multiple agents, modifying one by one would take a long time. It is more reasonable if you modify directly the `prefab`, since that is the reference of every copy in the scene.
+You can recognize the prefab for DeepRL as they have the acronym `RL`.
 ## DeepRL
 To train our agent with the DeepRL algorithm, we have used the PPO algorithm that is already implemented into the ml-agents library. 
 You can set your hyperparameters, but the one we used is as follows:
@@ -65,18 +67,4 @@ In order to strart the training there are some steps to follow.
 - Press the play button on the Unity editor, as this will start the training. The training will automatically stop when the number of steps will reach the one indicated in the config `max_steps`.
 
 ## Genetic Algorithm
-Here to start the training is a little simplier. Here are the steps:
-
-- Select the environment. In this case you can select whatever scene start with the acronym `GA`.
-![load scene](images/load_scene_ga.gif "load scene")
-- Be sure that there are no Neural Network loaded into the Agent. In order to do so you have to select the `jeep` gaming object, then a panel will show its properties.
-![jeep properties](images/ga_properties.jpg "jeep properties")
-- Modify the structure of the Neural Network, if needed.<br>
-![NNet](images/ga_nnet.png "NNet")
-- To customize the manager, you can modify the properties of the `_manager` game object. The property called `N Net saving interval` controls how often the Neural Net is saved, based on the number of generations. The `best agent selection` property determines the percentage of top-performing agents that will be selected. These selected agents are kept for the next generation and used for breeding by randomly selecting two parents from the pool.<br>
-![Genetic manager](images/manager.png "Genetic manager")
-- Press the play button on the Unity editor, as this will start the training. The training doesn't stop automatically, to stop it is just needed to press the stop button of the editor.
-
-# Important notes
-Since multiple scenes have multiple agents, modifying one by one would take a long time. It is more reasonable if you modify directly the prefab, since that is the reference of every copy in the scene.
-You can recognize the prefab for DeepRL and Genetic algorithm as they have the acronym `GA` and `RL`.
+**----> this was discarded after the first [release](https://github.com/ToldoDM/NNRL-car/releases/tag/v1.0.0-project-submission) <----**
