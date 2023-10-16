@@ -225,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2396051676525857846, guid: 5217c2f54daa13351a2e4ca5761d7eb2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.358086
+      value: 9.26
       objectReference: {fileID: 0}
     - target: {fileID: 2396051676525857846, guid: 5217c2f54daa13351a2e4ca5761d7eb2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -233,7 +233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2396051676525857846, guid: 5217c2f54daa13351a2e4ca5761d7eb2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.362573
+      value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 2396051676525857846, guid: 5217c2f54daa13351a2e4ca5761d7eb2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -267,6 +267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RLInversEnv
       objectReference: {fileID: 0}
+    - target: {fileID: 2396051677423697057, guid: 5217c2f54daa13351a2e4ca5761d7eb2, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 1a09152b703ca3b109dfcd6a5f80d95f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5217c2f54daa13351a2e4ca5761d7eb2, type: 3}
 --- !u!1 &2051682244
