@@ -15,7 +15,7 @@ Also, for training with DeepRL, we have used the Unity [ml-agents library](https
 
 
 # How to train
-# Important notes
+## Important notes
 Since multiple scenes have multiple agents, modifying one by one would take a long time. It is more reasonable if you modify directly the `prefab`, since that is the reference of every copy in the scene.
 You can recognize the prefab for DeepRL as they have the acronym `RL`.
 ## DeepRL
