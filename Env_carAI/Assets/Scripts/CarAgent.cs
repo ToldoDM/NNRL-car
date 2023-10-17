@@ -19,6 +19,7 @@ public class CarAgent : Agent
     public float timeSinceLastCheckpoint = 0f;
     public float distanceToNextGate = -1f;
     public float distanceToPrevGate = -1f;
+    public float orientation = 0f;
     public float overallFitness = 0f;
     public bool isTimeoutOn = true;
 
@@ -26,6 +27,7 @@ public class CarAgent : Agent
     public float nnAcceleration = 0f;
     public float nnNextGate = 1f;
     public float nnPrevGate = 1f;
+    public float nnOrientation = 0f;
 
     [Header("CarStats")] public float maxSpeed = 11.4f;
     public float acceleration = 5f;
@@ -55,6 +57,7 @@ public class CarAgent : Agent
         sensor.AddObservation(nnAcceleration);
         sensor.AddObservation(nnNextGate);
         sensor.AddObservation(nnPrevGate);
+        sensor.AddObservation(nnOrientation);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -105,6 +108,8 @@ public class CarAgent : Agent
         nnAcceleration = 0f;
         nnNextGate = 1f;
         nnPrevGate = 1f;
+        nnOrientation = 0f;
+        orientation = 0f;
         _nextGatePosition = Vector3.zero;
         _prevGatePosition = Vector3.zero;
         overallFitness = 0f;
@@ -145,6 +150,8 @@ public class CarAgent : Agent
         nnPrevGate = (distanceToPrevGate > maxNnGateDistance) ? 1f : (distanceToPrevGate / maxNnGateDistance);
         Debug.DrawLine(position, _nextGatePosition, Color.magenta);
         Debug.DrawLine(position, _prevGatePosition, Color.blue);
+        orientation = Vector3.Angle(position - _nextGatePosition, transform.forward);
+        nnOrientation = orientation / 180;
         var distance = _prevDistanceToNextGate - distanceToNextGate;
         var currReward = (currentSpeed * distance) * _isGoingInt;
         AddReward(currReward);

@@ -2969,7 +2969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 4
+    VectorObservationSize: 5
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -3074,12 +3074,14 @@ MonoBehaviour:
   timeSinceLastCheckpoint: 0
   distanceToNextGate: -1
   distanceToPrevGate: -1
+  orientation: 0
   overallFitness: 0
   isTimeoutOn: 1
   nnSpeed: 0
   nnAcceleration: 0
   nnNextGate: 1
   nnPrevGate: 1
+  nnOrientation: 0
   maxSpeed: 11.4
   acceleration: 5
   deceleration: 2
