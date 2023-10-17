@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 5
+    VectorObservationSize: 4
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -1093,19 +1093,20 @@ MonoBehaviour:
   currentSpeed: 0
   currentAcceleration: 0
   timeSinceLastCheckpoint: 0
-  distanceTraveledSinceCheckpoint: 0
   distanceToNextGate: -1
   distanceToPrevGate: -1
   overallFitness: 0
+  isTimeoutOn: 1
+  nnSpeed: 0
+  nnAcceleration: 0
+  nnNextGate: 1
+  nnPrevGate: 1
   maxSpeed: 11.4
   acceleration: 5
   deceleration: 2
   turnSpeed: 0.02
-  currentReward: 0
-  distanceMultiplier: 1.4
-  speedMultiplier: 0.2
   gateMultiplier: 1
-  giveReward: 0
+  maxNnGateDistance: 20
 --- !u!114 &2396051677423697055
 MonoBehaviour:
   m_ObjectHideFlags: 0
