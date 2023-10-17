@@ -208,7 +208,7 @@ public class CarAgent : Agent
         var carObject = transform;
         var spawnTransform = spawnPoints[Random.Range(0, spawnPoints.Count)];
         var position = spawnTransform.position;
-        var eulerAngles = spawnTransform.eulerAngles;
+        var eulerAngles = spawnTransform.eulerAngles + new Vector3(0, Random.Range(0, 36) * 10, 0);
         carObject.position = position;
         carObject.eulerAngles = eulerAngles;
         _lastPosition = position;
